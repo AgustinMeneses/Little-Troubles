@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://blhbsl22buq0u"]
+
+[ext_resource type="Script" path="res://Scripts/character.gd" id="1_ybuai"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0qo"]
+albedo_color = Color(0.548035, 0.387411, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2f7f"]
+material = SubResource("StandardMaterial3D_pc0qo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b623a"]
+
+[node name="Character" type="CharacterBody3D"]
+collision_mask = 3
+script = ExtResource("1_ybuai")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_u2f7f")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b623a")
