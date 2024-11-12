@@ -13,6 +13,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _process(delta):
+	print(mass)
 	if player_marker==null: return
 	global_position=player_marker.global_position
 	pass
@@ -22,3 +23,8 @@ func _picked_up(marker:Marker3D):
 	collision.disabled=true
 	set_process(true)
 	pass
+
+func dropped_off():
+	player_marker=null
+	collision.disabled=false
+	set_process(false)
