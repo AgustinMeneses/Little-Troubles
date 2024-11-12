@@ -2,11 +2,12 @@ extends CharacterBody3D
 
 var fuerza:float=5
 var object=null
+var is_picked_up=false
 
 const walk_speed=7.0
 const sprint_speed= 15.0
 var speed
-
+ 
 @export var JUMP_VELOCITY = 4
 @export var sensiblidad:float=0.01
 
@@ -59,12 +60,17 @@ func _on_pick_up_area_body_entered(body:RigidBody3D):
 	pass # Replace with function body
 func _on_pick_up_area_body_exited(body):
 	body.pick.visible=false
-	object=null
+	if not body.collision.disabled:
+		object=null
 	pass # Replace with function body.
 
 func _input(event):
 	if Input.is_action_just_pressed("E") and object!=null:
+		if object.collision.disabled:
+			object.dropped_off()
+			is_picked_up=false
+			return
 		object._picked_up(self_marker)
-		pass
+		is_picked_up=true
 	if event is InputEventMouseMotion:
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
