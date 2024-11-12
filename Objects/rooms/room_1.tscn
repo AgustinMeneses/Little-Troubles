@@ -1,11 +1,11 @@
 [gd_scene load_steps=8 format=3 uid="uid://dqah7pocafkes"]
 
-[ext_resource type="PackedScene" uid="uid://blhbsl22buq0u" path="res://Objects/character.tscn" id="1_7qxwr"]
-[ext_resource type="PackedScene" uid="uid://dmqgm4dk8aw23" path="res://Objects/big_button.tscn" id="2_4bnyr"]
+[ext_resource type="PackedScene" uid="uid://blhbsl22buq0u" path="res://character.tscn" id="1_7qxwr"]
+[ext_resource type="PackedScene" uid="uid://dmqgm4dk8aw23" path="res://big_button.tscn" id="2_4bnyr"]
 [ext_resource type="PackedScene" uid="uid://bssjf74f3rjxt" path="res://Objects/smol_button.tscn" id="3_6rxvl"]
 [ext_resource type="PackedScene" uid="uid://31826phf2jll" path="res://Objects/restart_button.tscn" id="4_ltwx1"]
 [ext_resource type="PackedScene" uid="uid://bemll2dvunmgl" path="res://Objects/UI/ui.tscn" id="5_cmehs"]
-[ext_resource type="PackedScene" uid="uid://d3ywchtfgr3mg" path="res://Objects/object_1.tscn" id="6_wmugh"]
+[ext_resource type="PackedScene" uid="uid://d3ywchtfgr3mg" path="res://object_1.tscn" id="6_wmugh"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_su8yx"]
 albedo_color = Color(0.835191, 0.858595, 0.630498, 1)

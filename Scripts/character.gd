@@ -47,11 +47,6 @@ func _physics_process(delta):
 	move_and_slide()
 
 func _process(delta):
-	if object==null: return
-	var marker:Marker3D=object.marker_3d
-	var sprite:Sprite2D=object.pick
-	var screen_pos=camera.unproject_position(marker.global_transform.origin)
-	sprite.position=screen_pos
 	pass
 
 func _on_pick_up_area_body_entered(body:RigidBody3D):

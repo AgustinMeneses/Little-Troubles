@@ -7,6 +7,4 @@ func _on_area_3d_body_entered(body):
 	body.scale.y=1
 	body.scale.z=1
 	
-	print("Github test");
-	
 	pass # Replace with function body.

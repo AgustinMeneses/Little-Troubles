@@ -1,8 +1,8 @@
 [gd_scene load_steps=16 format=3 uid="uid://d3ywchtfgr3mg"]
 
 [ext_resource type="Script" path="res://Scripts/Object 1.gd" id="1_i0v0e"]
-[ext_resource type="ArrayMesh" uid="uid://ba613pq8hweg7" path="res://Assets/kenney_conveyor-kit/Models/OBJ format/box-small.obj" id="2_j4v2b"]
-[ext_resource type="Texture2D" uid="uid://bj12qob0j8mj7" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0135.png" id="3_cwqh0"]
+[ext_resource type="ArrayMesh" uid="uid://dky5gtclrcr30" path="res://Assets/kenney_conveyor-kit/Models/OBJ format/box-small.obj" id="2_j4v2b"]
+[ext_resource type="Texture2D" uid="uid://cvtwqx7vg42nd" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0135.png" id="3_cwqh0"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w77t2"]
 bounce = 0.25
@@ -103,7 +103,7 @@ visibility_aabb = AABB(-4, -3.86621, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_vylhe")
 draw_pass_1 = SubResource("BoxMesh_5at3w")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Pick" type="Sprite3D" parent="."]
 transform = Transform3D(3.77662, 0, 0, 0, 3.77662, 0, 0, 0, 3.77662, 0, 1.02485, 0)
 billboard = 1
 texture = ExtResource("3_cwqh0")
