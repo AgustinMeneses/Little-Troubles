@@ -68,7 +68,7 @@ lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("StandardMaterial3D_cd3g8")
 
 [node name="Box" type="RigidBody3D"]
-collision_layer = 9
+collision_layer = 8
 physics_material_override = SubResource("PhysicsMaterial_w77t2")
 script = ExtResource("1_i0v0e")
 
@@ -82,13 +82,6 @@ shape = SubResource("ConvexPolygonShape3D_tfio4")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960461, 0)
-
-[node name="Pick" type="Sprite2D" parent="."]
-visible = false
-texture_filter = 1
-position = Vector2(588, 346)
-scale = Vector2(3.5925, 3.5925)
-texture = ExtResource("3_cwqh0")
 
 [node name="Min" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.228419, 0)
@@ -109,3 +102,8 @@ randomness = 1.0
 visibility_aabb = AABB(-4, -3.86621, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_vylhe")
 draw_pass_1 = SubResource("BoxMesh_5at3w")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3.77662, 0, 0, 0, 3.77662, 0, 0, 0, 3.77662, 0, 1.02485, 0)
+billboard = 1
+texture = ExtResource("3_cwqh0")

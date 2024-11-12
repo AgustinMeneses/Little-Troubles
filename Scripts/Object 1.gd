@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name Pickable
 
-@onready var pick = $Pick
+@onready var pick = $Sprite3D
 @onready var marker_3d = $Marker3D
 @onready var collision = $CollisionShape3D
 
