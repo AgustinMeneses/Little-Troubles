@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bkd10fg7jy82t"
+path="res://.godot/imported/cover-window.obj-5db514bae9fc8b5262d15b83dfdf351e.mesh"
+
+[deps]
+
+files=["res://.godot/imported/cover-window.obj-5db514bae9fc8b5262d15b83dfdf351e.mesh"]
+
+source_file="res://Assets/Models/OBJ format/cover-window.obj"
+dest_files=["res://.godot/imported/cover-window.obj-5db514bae9fc8b5262d15b83dfdf351e.mesh", "res://.godot/imported/cover-window.obj-5db514bae9fc8b5262d15b83dfdf351e.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

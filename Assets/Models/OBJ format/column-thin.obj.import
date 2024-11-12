@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bwyyx6u8dmroi"
+path="res://.godot/imported/column-thin.obj-11282d040757f34734a0fabcb1dc34b8.mesh"
+
+[deps]
+
+files=["res://.godot/imported/column-thin.obj-11282d040757f34734a0fabcb1dc34b8.mesh"]
+
+source_file="res://Assets/Models/OBJ format/column-thin.obj"
+dest_files=["res://.godot/imported/column-thin.obj-11282d040757f34734a0fabcb1dc34b8.mesh", "res://.godot/imported/column-thin.obj-11282d040757f34734a0fabcb1dc34b8.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

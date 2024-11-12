@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bdmbr5lare84g"
+path="res://.godot/imported/structure-doorway-wide.obj-40972659e411c9568ad6e1aa099562ea.mesh"
+
+[deps]
+
+files=["res://.godot/imported/structure-doorway-wide.obj-40972659e411c9568ad6e1aa099562ea.mesh"]
+
+source_file="res://Assets/Models/OBJ format/structure-doorway-wide.obj"
+dest_files=["res://.godot/imported/structure-doorway-wide.obj-40972659e411c9568ad6e1aa099562ea.mesh", "res://.godot/imported/structure-doorway-wide.obj-40972659e411c9568ad6e1aa099562ea.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

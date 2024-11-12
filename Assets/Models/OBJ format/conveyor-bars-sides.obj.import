@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bjpfd5pejq4mj"
+path="res://.godot/imported/conveyor-bars-sides.obj-d3de60012996625db8c73fcec25c5435.mesh"
+
+[deps]
+
+files=["res://.godot/imported/conveyor-bars-sides.obj-d3de60012996625db8c73fcec25c5435.mesh"]
+
+source_file="res://Assets/Models/OBJ format/conveyor-bars-sides.obj"
+dest_files=["res://.godot/imported/conveyor-bars-sides.obj-d3de60012996625db8c73fcec25c5435.mesh", "res://.godot/imported/conveyor-bars-sides.obj-d3de60012996625db8c73fcec25c5435.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
