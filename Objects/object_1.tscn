@@ -1,11 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://d3ywchtfgr3mg"]
+[gd_scene load_steps=15 format=3 uid="uid://d3ywchtfgr3mg"]
 
 [ext_resource type="Script" path="res://Scripts/Object 1.gd" id="1_i0v0e"]
 [ext_resource type="ArrayMesh" uid="uid://ba613pq8hweg7" path="res://Assets/kenney_conveyor-kit/Models/OBJ format/box-small.obj" id="2_j4v2b"]
 [ext_resource type="Texture2D" uid="uid://bj12qob0j8mj7" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0135.png" id="3_cwqh0"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_w77t2"]
-bounce = 0.25
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tfio4"]
 points = PackedVector3Array(0.25, 0.5, 0.25, 0.25, 0.5, -0.25, -0.25, 0.5, 0.25, 0.25, 0, 0.25, 0.25, 0, -0.25, -0.25, 0.5, -0.25, -0.25, 0, 0.25, -0.25, 0, -0.25)
@@ -69,7 +66,7 @@ material = SubResource("StandardMaterial3D_cd3g8")
 
 [node name="Box" type="RigidBody3D"]
 collision_layer = 8
-physics_material_override = SubResource("PhysicsMaterial_w77t2")
+collision_mask = 17
 script = ExtResource("1_i0v0e")
 
 [node name="Box-small" type="MeshInstance3D" parent="."]
@@ -80,11 +77,8 @@ mesh = ExtResource("2_j4v2b")
 transform = Transform3D(1.42926, 0, 0, 0, 1.42926, 0, 0, 0, 1.42926, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_tfio4")
 
-[node name="Marker3D" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.960461, 0)
-
 [node name="Min" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.228419, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.102717, 0)
 emitting = false
 amount = 9
 lifetime = 0.5
@@ -94,7 +88,7 @@ process_material = SubResource("ParticleProcessMaterial_6ejhp")
 draw_pass_1 = SubResource("BoxMesh_k85ci")
 
 [node name="Max" type="GPUParticles3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.371815, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110642, 0)
 emitting = false
 amount = 12
 lifetime = 0.5
@@ -104,6 +98,8 @@ process_material = SubResource("ParticleProcessMaterial_vylhe")
 draw_pass_1 = SubResource("BoxMesh_5at3w")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(3.77662, 0, 0, 0, 3.77662, 0, 0, 0, 3.77662, 0, 1.02485, 0)
+transform = Transform3D(3.77662, 0, 0, 0, 3.77662, 0, 0, 0, 3.77662, 0, 1.1193, 0)
+visible = false
 billboard = 1
+texture_filter = 0
 texture = ExtResource("3_cwqh0")

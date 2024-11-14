@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dmqgm4dk8aw23"]
+[gd_scene load_steps=8 format=3 uid="uid://dmqgm4dk8aw23"]
 
 [ext_resource type="Script" path="res://Scripts/Big Button.gd" id="1_1so8c"]
 
@@ -15,8 +15,15 @@ data = PackedVector3Array(0, 1, 0.5, 0.049, 1, 0.4976, 0, 0.6, 0.5, 0.049, 1, 0.
 height = 0.0868686
 radius = 0.463958
 
+[sub_resource type="Animation" id="Animation_nxrcn"]
+resource_name = "down"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_abqs5"]
+_data = {
+"down": SubResource("Animation_nxrcn")
+}
+
 [node name="big_button" type="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0811702, 0)
 script = ExtResource("1_1so8c")
 agrandar = true
 
@@ -33,6 +40,11 @@ shape = SubResource("ConcavePolygonShape3D_lphch")
 [node name="Collision effect area" type="CollisionShape3D" parent="Effect_area"]
 transform = Transform3D(1, 0, 0, 0, 1.36231, 0, 0, 0, 1, 0, 0.0926233, 0)
 shape = SubResource("CylinderShape3D_7ssbw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_abqs5")
+}
 
 [connection signal="body_entered" from="Effect_area" to="." method="_on_effect_area_body_entered"]
 [connection signal="body_exited" from="Effect_area" to="." method="_on_effect_area_body_exited"]
