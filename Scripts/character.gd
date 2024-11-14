@@ -1,7 +1,8 @@
 extends CharacterBody3D
 
 var fuerza:float=5
-var object=null
+#var object=null
+var object:Array[RigidBody3D]=[]
 var is_picked_up=false
 
 const walk_speed=7.0
@@ -13,7 +14,7 @@ var speed
 
 @onready var head = $MeshInstance3D
 @onready var camera:Camera3D = $MeshInstance3D/Camera3D
-@onready var self_marker = $Marker3D
+@onready var self_marker = $"PickUp Marker"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -46,31 +47,26 @@ func _physics_process(delta):
 		velocity.z = 0.0
 	move_and_slide()
 
-#func _process(delta):
-	#if object==null: return
-	#var marker:Marker3D=object.marker_3d
-	#var sprite:Sprite2D=object.pick
-	#var screen_pos=camera.unproject_position(marker.global_transform.origin)
-	#sprite.position=screen_pos
-	#pass
-
-func _on_pick_up_area_body_entered(body:RigidBody3D):
+func _on_pick_up_area_body_entered(body):
 	body.pick.visible=true
-	object=body
+	if body.is_in_group("objetos"):
+		object.append(body)
 	pass # Replace with function body
 func _on_pick_up_area_body_exited(body):
 	body.pick.visible=false
-	if not body.collision.disabled:
-		object=null
+	if body.is_in_group("objetos"):
+		if not body.collision.disabled:
+			object.erase(body)
 	pass # Replace with function body.
 
 func _input(event):
-	if Input.is_action_just_pressed("E") and object!=null:
-		if object.collision.disabled:
-			object.dropped_off()
+	if Input.is_action_just_pressed("E") and object.size()!=0:
+		if object.front().collision.disabled:
+			object.front().dropped_off()
+			object.erase(object.front())
 			is_picked_up=false
 			return
-		object._picked_up(self_marker)
+		object.front()._picked_up(self_marker)
 		is_picked_up=true
 	if event is InputEventMouseMotion:
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
