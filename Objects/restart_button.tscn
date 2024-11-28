@@ -1,9 +1,18 @@
-[gd_scene load_steps=6 format=3 uid="uid://31826phf2jll"]
+[gd_scene load_steps=9 format=3 uid="uid://31826phf2jll"]
 
 [ext_resource type="Script" path="res://Scripts/restart_button.gd" id="1_m47ye"]
+[ext_resource type="Texture2D" uid="uid://cvmv52mcbmhwn" path="res://Assets/Vintage_Brown_Plaster_dtfrtiyqu_4k/Vintage_Brown_Plaster_dtfrtiyqu_4k_Specular.jpg" id="2_36hny"]
+[ext_resource type="Texture2D" uid="uid://sqjb87tqw0q1" path="res://Assets/Vintage_Brown_Plaster_dtfrtiyqu_4k/Vintage_Brown_Plaster_dtfrtiyqu_4k_Normal.jpg" id="3_hpdud"]
+[ext_resource type="Texture2D" uid="uid://d3uite463xhhj" path="res://Assets/Vintage_Brown_Plaster_dtfrtiyqu_4k/Vintage_Brown_Plaster_dtfrtiyqu_4k_Roughness.jpg" id="4_e5n5h"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rn3f7"]
 albedo_color = Color(0.996441, 0.775726, 3.85046e-07, 1)
+metallic = 1.0
+metallic_texture = ExtResource("2_36hny")
+roughness_texture = ExtResource("4_e5n5h")
+normal_enabled = true
+normal_texture = ExtResource("3_hpdud")
+uv1_triplanar = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_qug8f"]
 material = SubResource("StandardMaterial3D_rn3f7")

@@ -84,33 +84,19 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_psc7l")
 
-[sub_resource type="Animation" id="Animation_x4n5u"]
-resource_name = "open"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = true
+[sub_resource type="Animation" id="Animation_dq8rg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("door-rotate-round-b/door")
+tracks/0/path = NodePath("CollisionShape3D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.9377e-16, 0, -1, 0.0333333, 1, 0, 0.0962148, 0, -0.995361, 0.0666667, 1, 0, 0.246814, 0, -0.969063, 0.1, 1, 0, 0.349249, 0, -0.93703, 0.133333, 1, 0, 0.437937, 0, -0.899005, 0.166667, 1, 0, 0.51372, 0, -0.857958, 0.2, 1, 0, 0.577717, 0, -0.816237, 0.233333, 1, 0, 0.631176, 0, -0.77564, 0.266667, 1, 0, 0.675364, 0, -0.737484, 0.3, 1, 0, 0.711494, 0, -0.702692, 0.333333, 1, 0, 0.740681, 0, -0.671857, 0.366667, 1, 0, 0.763921, 0, -0.64531, 0.4, 1, 0, 0.78208, 0, -0.623179, 0.433333, 1, 0, 0.795901, 0, -0.605427, 0.466667, 1, 0, 0.806014, 0, -0.591897, 0.5, 1, 0, 0.812947, 0, -0.582338, 0.533333, 1, 0, 0.817148, 0, -0.576428, 0.566667, 1, 0, 0.818997, 0, -0.573798, 0.6, 1, 0, 0.818827, 0, -0.57404, 0.633333, 1, 0, 0.816939, 0, -0.576725, 0.666667, 1, 0, 0.813612, 0, -0.581409, 0.7, 1, 0, 0.809119, 0, -0.587644, 0.733333, 1, 0, 0.803738, 0, -0.594983, 0.766667, 1, 0, 0.797753, 0, -0.602984, 0.8, 1, 0, 0.791464, 0, -0.611216, 0.833333, 1, 0, 0.785187, 0, -0.619259, 0.866667, 1, 0, 0.779254, 0, -0.626708, 0.9, 1, 0, 0.774014, 0, -0.633169, 0.933333, 1, 0, 0.769824, 0, -0.638256, 0.966667, 1, 0, 0.767938, 0, -0.640525, 1, 1, 0, 0.766044, 0, -0.642788)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = true
-tracks/1/enabled = true
-tracks/1/path = NodePath("door-rotate-round-b/door/handle")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, 5.81311e-17, 0, 0, -1, 0.0333333, 1, 0.135572, 0, 0, -0.990767, 0.0666667, 1, 0.220608, 0, 0, -0.975363, 0.1, 1, 0.266152, 0, 0, -0.963931, 0.133333, 1, 0.283013, 0, 0, -0.959116, 0.166667, 1, 0.281254, 0, 0, -0.959633, 0.2, 1, 0.270546, 0, 0, -0.962707, 0.233333, 1, 0.260529, 0, 0, -0.965466, 0.266667, 1, 0.185895, 0, 0, -0.98257, 0.3, 1, 0.0769447, 0, 0, -0.997035, 0.333333, 1, 0.011574, 0, 0, -0.999933, 0.366667, 1, -0.0194152, 0, 0, -0.999812, 0.4, 1, -0.0260073, 0, 0, -0.999662, 0.433333, 1, -0.0182651, 0, 0, -0.999833, 0.466667, 1, -0.00624296, 0, 0, -0.999981, 0.5, 1, 0, 0, 0, -1, 1, 1, 0, 0, 0, -1)
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape3D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false, true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_b4q2o"]
@@ -142,6 +128,35 @@ tracks/2/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_x4n5u"]
+resource_name = "open"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = true
+tracks/0/enabled = true
+tracks/0/path = NodePath("door-rotate-round-b/door")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 1.9377e-16, 0, -1, 0.0333333, 1, 0, 0.0962148, 0, -0.995361, 0.0666667, 1, 0, 0.246814, 0, -0.969063, 0.1, 1, 0, 0.349249, 0, -0.93703, 0.133333, 1, 0, 0.437937, 0, -0.899005, 0.166667, 1, 0, 0.51372, 0, -0.857958, 0.2, 1, 0, 0.577717, 0, -0.816237, 0.233333, 1, 0, 0.631176, 0, -0.77564, 0.266667, 1, 0, 0.675364, 0, -0.737484, 0.3, 1, 0, 0.711494, 0, -0.702692, 0.333333, 1, 0, 0.740681, 0, -0.671857, 0.366667, 1, 0, 0.763921, 0, -0.64531, 0.4, 1, 0, 0.78208, 0, -0.623179, 0.433333, 1, 0, 0.795901, 0, -0.605427, 0.466667, 1, 0, 0.806014, 0, -0.591897, 0.5, 1, 0, 0.812947, 0, -0.582338, 0.533333, 1, 0, 0.817148, 0, -0.576428, 0.566667, 1, 0, 0.818997, 0, -0.573798, 0.6, 1, 0, 0.818827, 0, -0.57404, 0.633333, 1, 0, 0.816939, 0, -0.576725, 0.666667, 1, 0, 0.813612, 0, -0.581409, 0.7, 1, 0, 0.809119, 0, -0.587644, 0.733333, 1, 0, 0.803738, 0, -0.594983, 0.766667, 1, 0, 0.797753, 0, -0.602984, 0.8, 1, 0, 0.791464, 0, -0.611216, 0.833333, 1, 0, 0.785187, 0, -0.619259, 0.866667, 1, 0, 0.779254, 0, -0.626708, 0.9, 1, 0, 0.774014, 0, -0.633169, 0.933333, 1, 0, 0.769824, 0, -0.638256, 0.966667, 1, 0, 0.767938, 0, -0.640525, 1, 1, 0, 0.766044, 0, -0.642788)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = true
+tracks/1/enabled = true
+tracks/1/path = NodePath("door-rotate-round-b/door/handle")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 5.81311e-17, 0, 0, -1, 0.0333333, 1, 0.135572, 0, 0, -0.990767, 0.0666667, 1, 0.220608, 0, 0, -0.975363, 0.1, 1, 0.266152, 0, 0, -0.963931, 0.133333, 1, 0.283013, 0, 0, -0.959116, 0.166667, 1, 0.281254, 0, 0, -0.959633, 0.2, 1, 0.270546, 0, 0, -0.962707, 0.233333, 1, 0.260529, 0, 0, -0.965466, 0.266667, 1, 0.185895, 0, 0, -0.98257, 0.3, 1, 0.0769447, 0, 0, -0.997035, 0.333333, 1, 0.011574, 0, 0, -0.999933, 0.366667, 1, -0.0194152, 0, 0, -0.999812, 0.4, 1, -0.0260073, 0, 0, -0.999662, 0.433333, 1, -0.0182651, 0, 0, -0.999833, 0.466667, 1, -0.00624296, 0, 0, -0.999981, 0.5, 1, 0, 0, 0, -1, 1, 1, 0, 0, 0, -1)
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="Animation" id="Animation_x8ahf"]
 resource_name = "open-and-close"
 length = 2.0
@@ -159,21 +174,6 @@ tracks/1/path = NodePath("door-rotate-round-b/door/handle")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = PackedFloat32Array(0, 1, 5.81311e-17, 0, 0, -1, 0.0333333, 1, 0.135572, 0, 0, -0.990767, 0.0666667, 1, 0.220608, 0, 0, -0.975363, 0.1, 1, 0.266152, 0, 0, -0.963931, 0.133333, 1, 0.283013, 0, 0, -0.959116, 0.166667, 1, 0.281254, 0, 0, -0.959633, 0.2, 1, 0.270546, 0, 0, -0.962707, 0.233333, 1, 0.260529, 0, 0, -0.965466, 0.266667, 1, 0.185895, 0, 0, -0.98257, 0.3, 1, 0.0769447, 0, 0, -0.997035, 0.333333, 1, 0.011574, 0, 0, -0.999933, 0.366667, 1, -0.0194152, 0, 0, -0.999812, 0.4, 1, -0.0260073, 0, 0, -0.999662, 0.433333, 1, -0.0182651, 0, 0, -0.999833, 0.466667, 1, -0.00624296, 0, 0, -0.999981, 0.5, 1, 0, 0, 0, -1, 2, 1, 0, 0, 0, -1)
-
-[sub_resource type="Animation" id="Animation_dq8rg"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_npwgx"]
 _data = {

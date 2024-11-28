@@ -1,9 +1,19 @@
-[gd_scene load_steps=8 format=3 uid="uid://dmqgm4dk8aw23"]
+[gd_scene load_steps=11 format=3 uid="uid://dmqgm4dk8aw23"]
 
 [ext_resource type="Script" path="res://Scripts/Big Button.gd" id="1_1so8c"]
+[ext_resource type="Texture2D" uid="uid://cvmv52mcbmhwn" path="res://Assets/Vintage_Brown_Plaster_dtfrtiyqu_4k/Vintage_Brown_Plaster_dtfrtiyqu_4k_Specular.jpg" id="2_sn2g1"]
+[ext_resource type="Texture2D" uid="uid://sqjb87tqw0q1" path="res://Assets/Vintage_Brown_Plaster_dtfrtiyqu_4k/Vintage_Brown_Plaster_dtfrtiyqu_4k_Normal.jpg" id="3_nuxnj"]
+[ext_resource type="Texture2D" uid="uid://d3uite463xhhj" path="res://Assets/Vintage_Brown_Plaster_dtfrtiyqu_4k/Vintage_Brown_Plaster_dtfrtiyqu_4k_Roughness.jpg" id="4_m3dt5"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qmr77"]
 albedo_color = Color(0.762133, 0.182536, 0, 1)
+metallic = 1.0
+metallic_texture = ExtResource("2_sn2g1")
+roughness_texture = ExtResource("4_m3dt5")
+emission = Color(0.851769, 0.851769, 0.851769, 1)
+normal_enabled = true
+normal_texture = ExtResource("3_nuxnj")
+uv1_triplanar = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_xmdrp"]
 material = SubResource("StandardMaterial3D_qmr77")
@@ -25,6 +35,7 @@ _data = {
 
 [node name="big_button" type="StaticBody3D"]
 script = ExtResource("1_1so8c")
+max_size = 1.0
 agrandar = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
