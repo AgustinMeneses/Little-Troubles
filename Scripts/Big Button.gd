@@ -34,21 +34,13 @@ func _size(particle_tipe:String, value:int):
 			if player.scale.x<=min_size:
 				player_particles.emitting=false
 				return
-		player.scale *= Vector3(1 + 0.016 * size_speed*value, 1 + 0.016 * size_speed*value, 1 + 0.016 * size_speed*value)
-		player.fuerza+=0.2*value
-	else:
-		object_particles = player_object.get_node(particle_tipe) as GPUParticles3D
-		object_particles.emitting=true
-		if value>0:
-			if player_object.scale.x>=max_size:
-				object_particles.emitting=false
-				return
+		if value > 0:
+			player._size("normal")
 		else:
-			if player_object.scale.x<=min_size:
-				object_particles.emitting=false
-				return
-		player_object.scale *= Vector3(1 + 0.016 * size_speed*value, 1 + 0.016 * size_speed*value, 1 + 0.016 * size_speed*value)
-		player_object.mass+=0.2*value
+			player._size("small")
+		print(player.head.scale)
+	else:
+		player_object._size("small")
 
 func _on_effect_area_body_entered(_body):
 	player=_body

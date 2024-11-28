@@ -3,6 +3,7 @@ class_name Pickable
 
 @onready var pick = $Sprite3D
 @onready var collision = $CollisionShape3D
+@onready var anim = $AnimationPlayer
 
 var player_marker:Marker3D
 # Called when the node enters the scene tree for the first time.
@@ -28,3 +29,7 @@ func dropped_off():
 	player_marker=null
 	position.x+=2
 	set_process(false)
+
+func _size(size:String):
+	if size == "small":
+		anim.play("normal_to_small")

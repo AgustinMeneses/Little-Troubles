@@ -12,6 +12,7 @@ var speed
 @export var JUMP_VELOCITY = 4
 @export var sensiblidad:float=0.01
 
+@onready var anim = $AnimationPlayer
 @onready var head = $MeshInstance3D
 @onready var camera:Camera3D = $MeshInstance3D/Camera3D
 @onready var self_marker = $"PickUp Marker"
@@ -20,6 +21,7 @@ var speed
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
+	add_to_group("Player")
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	pass
 
@@ -70,3 +72,9 @@ func _input(event):
 		is_picked_up=true
 	if event is InputEventMouseMotion:
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
+
+func _size(size:String):
+	if size == "small" and head.scale.x == 1:
+		anim.play("Normal_to_small")
+	elif size == "normal" and head.scale.x == 0.1:
+		anim.play("small_to_normal")

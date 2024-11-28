@@ -4,6 +4,7 @@ extends	StaticBody3D
 var actual_state:String="closed"
 var states:Array=["open","closed"]
 var available:bool=true
+var level_completed:bool=false
 # Called when the node enters the scene tree for the first time.
 
 func _input(_event):
@@ -14,6 +15,8 @@ func _input(_event):
 
 func _on_close_the_door_body_entered(body):
 	if available:
+		print(body)
+		level_completed=true
 		$"AnimationPlayer".play("close")
 		available=false
 		await $"AnimationPlayer".animation_finished
