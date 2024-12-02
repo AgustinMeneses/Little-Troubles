@@ -9,6 +9,7 @@ const walk_speed=7.0
 const sprint_speed= 15.0
 var speed
  
+var is_small : bool = false
 @export var JUMP_VELOCITY = 4
 @export var sensiblidad:float=0.01
 
@@ -74,7 +75,15 @@ func _input(event):
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
 
 func _size(size:String):
-	if size == "small" and head.scale.x == 1:
+	if size == "small" and not is_small:
 		anim.play("Normal_to_small")
-	elif size == "normal" and head.scale.x == 0.1:
+		$Min.emitting = true
+		is_small = true
+	elif size == "normal" and is_small:
 		anim.play("small_to_normal")
+		$Max.emitting = true
+		is_small = false
+	else:
+		print(head.scale.x)
+		$Min.emitting = false
+		$Max.emitting = false

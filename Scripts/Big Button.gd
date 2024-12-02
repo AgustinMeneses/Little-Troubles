@@ -17,31 +17,22 @@ func _process(delta):
 		player_object=null
 	#agrandar o encojer?
 	if agrandar:
-		_size("Max",1)
+		_max()
 	else:
-		_size("Min",-1)
+		_min()
 	pass
 
-func _size(particle_tipe:String, value:int):
+func _max():
 	if player_object==null:
-		player_particles = player.get_node(particle_tipe) as GPUParticles3D
-		player_particles.emitting=true
-		if value>0:
-			if player.scale.x>=max_size:
-				player_particles.emitting=false
-				return
-		else:
-			if player.scale.x<=min_size:
-				player_particles.emitting=false
-				return
-		if value > 0:
-			player._size("normal")
-		else:
-			player._size("small")
-		print(player.head.scale)
+		player._size("normal")
 	else:
 		player_object._size("small")
 
+func _min():
+	if player_object==null:
+		player._size("small")
+	else:
+		player_object._size("small")
 func _on_effect_area_body_entered(_body):
 	player=_body
 	# Tiene un objeto en la mano?
@@ -50,8 +41,8 @@ func _on_effect_area_body_entered(_body):
 	else:
 		player_object=null
 	pass # Replace with function body.
+
 func _on_effect_area_body_exited(_body):
-	player_particles.emitting=false
 	player=null
 	player_object=null
 	pass # Replace with function body.

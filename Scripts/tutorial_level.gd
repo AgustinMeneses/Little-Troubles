@@ -18,4 +18,6 @@ func _on_area_3d_body_entered(body:CharacterBody3D):
 		#$Escape.visible = true
 		animation_player.play("SpotLights")
 		can_animation = false
+		await  animation_player.animation_finished
+		$"Invisible wall".queue_free()
 	pass # Replace with function body.
