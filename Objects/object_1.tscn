@@ -125,9 +125,6 @@ graph_offset = Vector2(36, 11)
 [node name="Box" type="RigidBody3D"]
 collision_layer = 8
 collision_mask = 17
-axis_lock_angular_x = true
-axis_lock_angular_y = true
-axis_lock_angular_z = true
 script = ExtResource("1_i0v0e")
 
 [node name="Box-small" type="MeshInstance3D" parent="."]

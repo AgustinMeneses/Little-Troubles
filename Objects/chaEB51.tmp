@@ -97,30 +97,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D/SpringArm3D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D/SpringArm3D/Camera3D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(-0.0758694, 0, 0), Vector3(0.785398, 0.0010242, 0.000122413)]
-}
 
 [sub_resource type="Animation" id="Animation_jdbxc"]
 length = 0.001
@@ -147,30 +123,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D/SpringArm3D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D/SpringArm3D/Camera3D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.0758694, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_hw4ba"]
@@ -199,30 +151,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("MeshInstance3D/SpringArm3D:scale")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D/SpringArm3D/Camera3D:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0.785398, 0.0010242, 0.000122413), Vector3(-0.0750492, 0.00174533, 0)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ahk4q"]
 _data = {
@@ -239,15 +167,9 @@ JUMP_VELOCITY = 5
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_u2f7f")
 
-[node name="SpringArm3D" type="SpringArm3D" parent="MeshInstance3D"]
-transform = Transform3D(0.999999, 0.00117512, -0.000364336, -0.000786797, 0.838493, 0.544912, 0.000945828, -0.544911, 0.838493, 0, 0, 0)
-collision_mask = 255
-spring_length = 3.5
-margin = 0.5
-
-[node name="Camera3D" type="Camera3D" parent="MeshInstance3D/SpringArm3D"]
-transform = Transform3D(100, 0, 0, 0, 99.7123, 7.57966, 0, -7.57966, 99.7123, 2.32831e-10, 0.0526738, 3.60517)
-fov = 99.7
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.79653, 0.604599, 0, -0.604599, 0.79653, 0, 2, 3)
+fov = 100.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_b623a")
