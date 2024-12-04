@@ -1,0 +1,33 @@
+[remap]
+
+importer="font_data_dynamic"
+type="FontFile"
+uid="uid://dcfh31n1bhclp"
+path="res://.godot/imported/Mother's Day in Spain.ttf-7baa359413817e69dc1c4e88324a5a98.fontdata"
+
+[deps]
+
+source_file="res://Assets/FONTS/mother-s-day-in-spain/Mother's Day in Spain.ttf"
+dest_files=["res://.godot/imported/Mother's Day in Spain.ttf-7baa359413817e69dc1c4e88324a5a98.fontdata"]
+
+[params]
+
+Rendering=null
+antialiasing=1
+generate_mipmaps=false
+multichannel_signed_distance_field=false
+msdf_pixel_range=8
+msdf_size=48
+allow_system_fallback=true
+force_autohinter=false
+hinting=1
+subpixel_positioning=1
+oversampling=0.0
+Fallbacks=null
+fallbacks=[]
+Compress=null
+compress=true
+preload=[]
+language_support={}
+script_support={}
+opentype_features={}
