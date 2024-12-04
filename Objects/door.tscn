@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://cmmc1grsbix0j"]
+[gd_scene load_steps=17 format=3 uid="uid://cmmc1grsbix0j"]
 
 [ext_resource type="Texture2D" uid="uid://du25mx27j2kti" path="res://Assets/kenney_building-kit/Models/GLB format/Textures/colormap.png" id="1_e2s8s"]
 [ext_resource type="Script" path="res://Scripts/Door.gd" id="1_emqp8"]
 [ext_resource type="Texture2D" uid="uid://bj12qob0j8mj7" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0135.png" id="3_v7t8x"]
+[ext_resource type="AudioStream" uid="uid://bbm84whpokqon" path="res://Assets/Sounds/door opening.mp3" id="4_ucqlr"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p4a3i"]
 points = PackedVector3Array(0.0499951, 1.64982, 0.899909, 0.0499951, 1.82208, 0.865684, -0.0500098, 1.64982, 0.899909, 0.0499951, 6.20393e-17, 0.899909, 0.075, 0.949892, 0.799949, -0.0500098, 1.82208, 0.865684, 0.075, 0.985249, 0.78528, 0.0499951, 1.96803, 0.768168, -0.075, 0.949892, 0.799949, -0.0500098, 6.20393e-17, 0.899909, 0.0499951, 6.20393e-17, -9.7435e-06, 0.075, 0.199804, 0.0499707, 0.075, 0.764477, 0.78528, 0.075, 0.799834, 0.799949, -0.0500098, 1.96803, 0.768168, -0.075, 0.985249, 0.78528, 0.075, 1.44981, 0.0499707, 0.0499951, 2.06567, 0.62212, -0.075, 0.799834, 0.799949, -0.075, 0.764477, 0.78528, -0.075, 0.199804, 0.0499707, -0.0500098, 6.20393e-17, -9.7435e-06, 0.0499951, 0.199804, -0.025, 0.075, 0.199804, -9.7435e-06, -0.0500098, 2.06567, 0.62212, -0.075, 1.44981, 0.0499707, 0.075, 1.44981, -9.7435e-06, 0.0499951, 2.1, 0.449995, -0.075, 0.199804, -9.7435e-06, -0.0500098, 0.199804, -0.025, 0.0499951, 1.44981, -0.025, -0.0500098, 2.1, 0.449995, -0.075, 1.44981, -9.7435e-06, 0.0499951, 1.64982, -9.7435e-06, 0.0499951, 1.82208, 0.034216, 0.0499951, 1.96803, 0.131732, 0.0499951, 2.06567, 0.27778, -0.0500098, 1.44981, -0.025, -0.0500098, 2.06567, 0.27778, -0.0500098, 1.96803, 0.131732, -0.0500098, 1.82208, 0.034216, -0.0500098, 1.64982, -9.7435e-06)
@@ -98,6 +99,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_b4q2o"]
 resource_name = "close"
@@ -156,6 +169,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AudioStreamPlayer3D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_x8ahf"]
 resource_name = "open-and-close"
@@ -210,11 +235,12 @@ shape = SubResource("BoxShape3D_cflb3")
 [node name="door-rotate-round-b" type="Node3D" parent="."]
 
 [node name="door" type="MeshInstance3D" parent="door-rotate-round-b"]
+transform = Transform3D(1, 0, -3.8754e-16, 0, 1, 0, 3.8754e-16, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yesvp")
 skeleton = NodePath("")
 
 [node name="handle" type="MeshInstance3D" parent="door-rotate-round-b/door"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 1.16262e-16, 0, -1.16262e-16, 1, 0, 0.9, 0.75)
 mesh = SubResource("ArrayMesh_nnc6g")
 skeleton = NodePath("")
 
@@ -222,5 +248,10 @@ skeleton = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_npwgx")
 }
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989403, 0.385188)
+stream = ExtResource("4_ucqlr")
+pitch_scale = 1.54
 
 [connection signal="body_entered" from="Close the door" to="." method="_on_close_the_door_body_entered"]

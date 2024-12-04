@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://0c70bl3qfa80"]
+
+[ext_resource type="FontFile" uid="uid://ddiy7gwk54eal" path="res://Assets/FONTS/the-lithium-shop/The Lithium Shop.ttf" id="1_81rlh"]
+
+[resource]
+font = ExtResource("1_81rlh")
+font_size = 1000
+font_color = Color(4.9334e-07, 0.144234, 0.155597, 1)
+outline_size = 50
+outline_color = Color(0, 0.727625, 0.665112, 1)

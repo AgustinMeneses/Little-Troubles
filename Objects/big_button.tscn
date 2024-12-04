@@ -57,5 +57,8 @@ libraries = {
 "": SubResource("AnimationLibrary_abqs5")
 }
 
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.463664, 0)
+
 [connection signal="body_entered" from="Effect_area" to="." method="_on_effect_area_body_entered"]
 [connection signal="body_exited" from="Effect_area" to="." method="_on_effect_area_body_exited"]

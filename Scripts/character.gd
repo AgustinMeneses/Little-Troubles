@@ -5,10 +5,11 @@ var fuerza:float=5
 var object:Array[RigidBody3D]=[]
 var is_picked_up=false
 
-const walk_speed=7.0
-const sprint_speed= 15.0
+const walk_speed=5.5
+const sprint_speed= 9
 var speed
- 
+
+var can_move : bool = true
 var is_small : bool = false
 @export var JUMP_VELOCITY = 4
 @export var sensiblidad:float=0.01
@@ -24,27 +25,31 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func _ready():
 	add_to_group("Player")
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
+	$Min.emitting = false
+	$Max.emitting = false
 	pass
 
 func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y -= gravity * delta
-
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	if Input.is_action_pressed("Shift"):
-		speed = sprint_speed
-	else:
-		speed= walk_speed
-	
-	var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * speed
-		velocity.z = direction.z * speed
+	if can_move:
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		
+		if Input.is_action_pressed("Shift"):
+			speed = sprint_speed
+		else:
+			speed= walk_speed
+		var input_dir = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+		var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+		if direction:
+			velocity.x = direction.x * speed
+			velocity.z = direction.z * speed
+		else:
+			velocity.x = 0.0
+			velocity.z = 0.0
 	else:
 		velocity.x = 0.0
 		velocity.z = 0.0
@@ -77,13 +82,13 @@ func _input(event):
 func _size(size:String):
 	if size == "small" and not is_small:
 		anim.play("Normal_to_small")
-		$Min.emitting = true
 		is_small = true
+		can_move = false
+		await anim.animation_finished
+		can_move = true
 	elif size == "normal" and is_small:
 		anim.play("small_to_normal")
-		$Max.emitting = true
 		is_small = false
-	else:
-		print(head.scale.x)
-		$Min.emitting = false
-		$Max.emitting = false
+		can_move = false
+		await anim.animation_finished
+		can_move = true

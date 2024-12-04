@@ -8,8 +8,8 @@ class_name size_button
 
 var player:CharacterBody3D
 var player_object:RigidBody3D
-var player_particles:GPUParticles3D
-var object_particles:GPUParticles3D
+
+@onready var marker_3d = $Marker3D
 
 func _process(delta):
 	if player==null: return
@@ -26,8 +26,7 @@ func _max():
 	if player_object==null:
 		player._size("normal")
 	else:
-		player_object._size("small")
-
+		player_object._size("big", player)
 func _min():
 	if player_object==null:
 		player._size("small")

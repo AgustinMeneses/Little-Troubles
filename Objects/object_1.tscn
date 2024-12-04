@@ -1,11 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://d3ywchtfgr3mg"]
+[gd_scene load_steps=19 format=3 uid="uid://d3ywchtfgr3mg"]
 
 [ext_resource type="Script" path="res://Scripts/Object 1.gd" id="1_i0v0e"]
 [ext_resource type="ArrayMesh" uid="uid://ba613pq8hweg7" path="res://Assets/kenney_conveyor-kit/Models/OBJ format/box-small.obj" id="2_j4v2b"]
 [ext_resource type="Texture2D" uid="uid://bj12qob0j8mj7" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0135.png" id="3_cwqh0"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_nkki6"]
-size = Vector3(1, 0.734985, 0.722778)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_j070j"]
+points = PackedVector3Array(0.25, 0.5, 0.25, 0.25, 0.5, -0.25, -0.25, 0.5, 0.25, 0.25, 0, 0.25, 0.25, 0, -0.25, -0.25, 0.5, -0.25, -0.25, 0, 0.25, -0.25, 0, -0.25)
 
 [sub_resource type="Curve" id="Curve_4a875"]
 _data = [Vector2(0, 1), 0.0, 1.23214, 0, 0, Vector2(0.652174, 0), -2.93187, 0.0, 0, 0]
@@ -37,13 +37,15 @@ emission_energy_multiplier = 16.0
 material = SubResource("StandardMaterial3D_wwe8p")
 
 [sub_resource type="Curve" id="Curve_bm80d"]
-_data = [Vector2(0, 1), 0.0, 1.02586, 0, 0, Vector2(0.615942, 0.010989), -2.70801, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 1.02586, 0, 0, Vector2(0.617886, 0), 2.49927, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_vn1jn"]
 curve = SubResource("Curve_bm80d")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vylhe"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
 spread = 180.0
 flatness = 1.0
 initial_velocity_min = 2.0
@@ -53,74 +55,103 @@ scale_min = 0.2
 scale_max = 0.3
 scale_curve = SubResource("CurveTexture_vn1jn")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cd3g8"]
-albedo_color = Color(0.684175, 0, 0.0695709, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1nuu"]
+albedo_color = Color(0.682353, 0, 0.0705882, 1)
 emission_enabled = true
-emission = Color(0.563631, 0.110676, 1.44392e-07, 1)
-emission_energy_multiplier = 14.56
-backlight = Color(1, 1, 1, 1)
+emission = Color(0.999734, 0.143485, 0.172745, 1)
+emission_energy_multiplier = 16.0
+disable_receive_shadows = true
 
-[sub_resource type="BoxMesh" id="BoxMesh_5at3w"]
-lightmap_size_hint = Vector2i(14, 21)
-material = SubResource("StandardMaterial3D_cd3g8")
+[sub_resource type="SphereMesh" id="SphereMesh_6nxuc"]
+material = SubResource("StandardMaterial3D_c1nuu")
 
 [sub_resource type="Animation" id="Animation_s7agy"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:size")
+tracks/0/path = NodePath("CollisionShape3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(1, 0.734985, 0.722778)]
+"values": [Vector3(1.42926, 1.42926, 1.42926)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box-small:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.42926, 1.42926, 1.42926)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Max:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_k5rjl"]
+resource_name = "small_to_normal"
 
 [sub_resource type="Animation" id="Animation_ev5jk"]
 resource_name = "Small_to_big"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("CollisionShape3D:shape:size")
+tracks/0/path = NodePath("CollisionShape3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1, 0.734985, 0.722778)]
+"values": [Vector3(1.42926, 1.42926, 1.42926), Vector3(2.3717, 2.3717, 2.3717), Vector3(3.2, 3.2, 3.2), Vector3(3, 3, 3)]
 }
-
-[sub_resource type="Animation" id="Animation_k5rjl"]
-resource_name = "small_to_normal"
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Box-small:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.42926, 1.42926, 1.42926), Vector3(2.3717, 2.3717, 2.3717), Vector3(3.2, 3.2, 3.2), Vector3(3, 3, 3)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Max:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jtuxf"]
 _data = {
 "RESET": SubResource("Animation_s7agy"),
-"normal_to_small": SubResource("Animation_ev5jk"),
-"small_to_normal": SubResource("Animation_k5rjl")
+"big_to_normal": SubResource("Animation_k5rjl"),
+"normal_to_big": SubResource("Animation_ev5jk")
 }
-
-[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_respj"]
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yyv16"]
-animation = &"normal_to_small"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jtrbe"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_b3ef5"]
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_cxcgj"]
-states/idle/node = SubResource("AnimationNodeBlendSpace2D_respj")
-states/idle/position = Vector2(308, 100)
-states/normal_to_small/node = SubResource("AnimationNodeAnimation_yyv16")
-states/normal_to_small/position = Vector2(520, 100)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_jtrbe"), "idle", "normal_to_small", SubResource("AnimationNodeStateMachineTransition_b3ef5")]
-graph_offset = Vector2(36, 11)
 
 [node name="Box" type="RigidBody3D"]
 collision_layer = 8
@@ -132,8 +163,8 @@ transform = Transform3D(1.42926, 0, 0, 0, 1.42926, 0, 0, 0, 1.42926, 0, 0, 0)
 mesh = ExtResource("2_j4v2b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.763884, 0, 0, 0, 1, 0, 0, 0, 1, -0.0201536, 0.361639, 0.00339091)
-shape = SubResource("BoxShape3D_nkki6")
+transform = Transform3D(1.42926, 0, 0, 0, 1.42926, 0, 0, 0, 1.42926, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_j070j")
 
 [node name="Min" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.102717, 0)
@@ -147,13 +178,12 @@ draw_pass_1 = SubResource("BoxMesh_k85ci")
 
 [node name="Max" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.110642, 0)
-emitting = false
 amount = 12
 lifetime = 0.5
 randomness = 1.0
 visibility_aabb = AABB(-4, -3.86621, -4, 8, 8, 8)
 process_material = SubResource("ParticleProcessMaterial_vylhe")
-draw_pass_1 = SubResource("BoxMesh_5at3w")
+draw_pass_1 = SubResource("SphereMesh_6nxuc")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(3.77662, 0, 0, 0, 3.77662, 0, 0, 0, 3.77662, 0, 1.1193, 0)
@@ -166,8 +196,3 @@ texture = ExtResource("3_cwqh0")
 libraries = {
 "": SubResource("AnimationLibrary_jtuxf")
 }
-
-[node name="AnimationTree" type="AnimationTree" parent="."]
-tree_root = SubResource("AnimationNodeStateMachine_cxcgj")
-anim_player = NodePath("../AnimationPlayer")
-parameters/idle/blend_position = Vector2(0, 0)
