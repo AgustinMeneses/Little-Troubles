@@ -34,8 +34,9 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y -= gravity * delta
 	# Handle jump.
-	if can_move:
+	if can_move:	
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			$jump.play()
 			velocity.y = JUMP_VELOCITY
 		
 		if Input.is_action_pressed("Shift"):
@@ -47,7 +48,14 @@ func _physics_process(delta):
 		if direction:
 			velocity.x = direction.x * speed
 			velocity.z = direction.z * speed
+			if speed == walk_speed and is_on_floor() and not is_on_wall():
+				anim.play("walking")
+			elif speed == sprint_speed and is_on_floor() and not is_on_wall():
+				anim.play("sprint")
+			else:
+				anim.pause()
 		else:
+			anim.pause()
 			velocity.x = 0.0
 			velocity.z = 0.0
 	else:

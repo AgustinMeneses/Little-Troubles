@@ -1,10 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsacjcvmo4kah"]
+[gd_scene load_steps=17 format=3 uid="uid://bsacjcvmo4kah"]
 
 [ext_resource type="Script" path="res://Objects/rooms/main_menu.gd" id="1_3v1nl"]
 [ext_resource type="LabelSettings" uid="uid://0c70bl3qfa80" path="res://text_settings.tres" id="1_rtymg"]
 [ext_resource type="FontFile" uid="uid://yyp2l3s4qnye" path="res://Assets/FONTS/ominous-outlaw/Ominous Outlaw Free.otf" id="2_j8a6n"]
 [ext_resource type="PackedScene" uid="uid://cmmc1grsbix0j" path="res://Objects/door.tscn" id="3_0hcah"]
 [ext_resource type="Environment" uid="uid://c2gcjyhvtkain" path="res://Worl_eviroment.tres" id="4_7512d"]
+[ext_resource type="AudioStream" uid="uid://b0vlo8wfahwyu" path="res://Assets/Sounds/Main Menu Music.wav" id="6_kwxme"]
+[ext_resource type="AudioStream" uid="uid://s2gcmgieq2ru" path="res://Assets/Sounds/Main Menu Music 2.wav" id="7_gwoic"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_htwf6"]
 font = ExtResource("2_j8a6n")
@@ -298,6 +300,18 @@ mesh = SubResource("CylinderMesh_v84ub")
 transform = Transform3D(1.19791, 0, 0, 0, -2.12285e-08, -1.44298, 0, 0.485652, -6.30749e-08, -0.624354, 0.949133, 0.453351)
 mesh = SubResource("BoxMesh_o55c0")
 
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_kwxme")
+volume_db = -14.696
+autoplay = true
+
+[node name="Music2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_gwoic")
+volume_db = -80.0
+autoplay = true
+
 [connection signal="pressed" from="Control/Option Buttons/New Game/New Game Button" to="." method="_on_new_game_button_pressed"]
 [connection signal="pressed" from="Control/Option Buttons/Continue/Continue Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Control/Option Buttons/Exit/Exit Button" to="." method="_on_exit_button_pressed"]
+[connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
+[connection signal="finished" from="Music2" to="." method="_on_music_2_finished"]
