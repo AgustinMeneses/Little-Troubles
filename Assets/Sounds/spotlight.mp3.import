@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/spotlight.mp3-37d4c978d869fa1a264272018102a03
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

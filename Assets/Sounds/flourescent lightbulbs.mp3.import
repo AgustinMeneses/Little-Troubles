@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://p6g4w1eg1rsm"
+path="res://.godot/imported/flourescent lightbulbs.mp3-4610d7f3dec15c3557ffe9993387d5d2.mp3str"
+
+[deps]
+
+source_file="res://Assets/Sounds/flourescent lightbulbs.mp3"
+dest_files=["res://.godot/imported/flourescent lightbulbs.mp3-4610d7f3dec15c3557ffe9993387d5d2.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
