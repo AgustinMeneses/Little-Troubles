@@ -1,8 +1,12 @@
-[gd_scene load_steps=25 format=3 uid="uid://blhbsl22buq0u"]
+[gd_scene load_steps=29 format=3 uid="uid://blhbsl22buq0u"]
 
 [ext_resource type="Script" path="res://Scripts/character.gd" id="1_ybuai"]
 [ext_resource type="AudioStream" uid="uid://dl6phr6qyukb8" path="res://Assets/Sounds/walking.mp3" id="2_spbdt"]
 [ext_resource type="AudioStream" uid="uid://bkljcgdhk3pjm" path="res://Assets/Sounds/Jump.mp3" id="3_pp7em"]
+[ext_resource type="AudioStream" uid="uid://b6yllxt4yw4ls" path="res://Assets/Sounds/size up.mp3" id="4_w8icv"]
+[ext_resource type="AudioStream" uid="uid://bx5y8efismxyq" path="res://Assets/Sounds/size down.mp3" id="5_buhrv"]
+[ext_resource type="AudioStream" uid="uid://2jwjuqp4s4vj" path="res://Assets/Sounds/jump grunt.mp3" id="6_so7m4"]
+[ext_resource type="PackedScene" uid="uid://cek2lqan0b6m8" path="res://Objects/UI/options.tscn" id="7_1qkue"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0qo"]
 albedo_color = Color(0.548035, 0.387411, 0, 1)
@@ -75,6 +79,7 @@ material = SubResource("StandardMaterial3D_xho4e")
 
 [sub_resource type="Animation" id="Animation_75itv"]
 resource_name = "Normal_to_small"
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -135,13 +140,25 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sounds/size down:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_jdbxc"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("walking:playing")
+tracks/0/path = NodePath("sounds/walking:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -153,7 +170,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("walking:pitch_scale")
+tracks/1/path = NodePath("sounds/walking:pitch_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -165,10 +182,34 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("jump:playing")
+tracks/2/path = NodePath("sounds/jump:playing")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sounds/size up:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sounds/size down:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -181,7 +222,7 @@ length = 10.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("jump:playing")
+tracks/0/path = NodePath("sounds/jump:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -193,6 +234,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_hw4ba"]
 resource_name = "small_to_normal"
+length = 1.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -253,6 +295,18 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sounds/size up:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_toi6q"]
 resource_name = "sprint"
@@ -260,7 +314,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("walking:playing")
+tracks/0/path = NodePath("sounds/walking:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -272,7 +326,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("walking:pitch_scale")
+tracks/1/path = NodePath("sounds/walking:pitch_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -288,7 +342,7 @@ length = 0.55
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("walking:playing")
+tracks/0/path = NodePath("sounds/walking:playing")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -300,7 +354,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("walking:pitch_scale")
+tracks/1/path = NodePath("sounds/walking:pitch_scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -375,15 +429,56 @@ libraries = {
 "": SubResource("AnimationLibrary_ahk4q")
 }
 
-[node name="walking" type="AudioStreamPlayer" parent="."]
+[node name="sounds" type="Node3D" parent="."]
+
+[node name="walking" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("2_spbdt")
 volume_db = -5.652
 pitch_scale = 0.9
+bus = &"Effects"
 
-[node name="jump" type="AudioStreamPlayer" parent="."]
+[node name="jump" type="AudioStreamPlayer" parent="sounds"]
 stream = ExtResource("3_pp7em")
 volume_db = 5.652
 pitch_scale = 1.52
+bus = &"Effects"
+
+[node name="size up" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("4_w8icv")
+bus = &"Effects"
+
+[node name="size down" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("5_buhrv")
+bus = &"Effects"
+
+[node name="jump grunt" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("6_so7m4")
+volume_db = -3.0
+bus = &"Effects"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Options" parent="CanvasLayer/Control" instance=ExtResource("7_1qkue")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -556.0
+offset_top = -260.0
+offset_right = 556.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="body_entered" from="PickUpArea" to="." method="_on_pick_up_area_body_entered"]
 [connection signal="body_exited" from="PickUpArea" to="." method="_on_pick_up_area_body_exited"]

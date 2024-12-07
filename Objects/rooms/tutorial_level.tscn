@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cjnh80pyhu45b"]
+[gd_scene load_steps=18 format=3 uid="uid://cjnh80pyhu45b"]
 
 [ext_resource type="MeshLibrary" uid="uid://bj8xch6lx5nv4" path="res://Tile Set.tres" id="1_3ljjq"]
 [ext_resource type="Script" path="res://Scripts/tutorial_level.gd" id="1_qfp4h"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://p6g4w1eg1rsm" path="res://Assets/Sounds/flourescent lightbulbs.mp3" id="5_x6p42"]
 [ext_resource type="Texture2D" uid="uid://cxv25h6qikqk6" path="res://Assets/gerardo.png" id="6_e8n0p"]
 [ext_resource type="Texture2D" uid="uid://cgylqrdfno3ee" path="res://Assets/Sprite.png" id="9_a1x8x"]
+[ext_resource type="FontFile" uid="uid://w73s15g4cqdn" path="res://Assets/FONTS/mistaken/Mistaken.otf" id="9_dmb50"]
 
 [sub_resource type="Animation" id="Animation_jgkwf"]
 length = 6.0
@@ -426,11 +427,13 @@ spot_angle = 19.47
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.127298, -0.256489, -12.5977)
 stream = ExtResource("5_224c1")
 volume_db = 4.211
+bus = &"Effects"
 
 [node name="Light" type="AudioStreamPlayer3D" parent="SpotLights/SpotLight3D"]
 stream = ExtResource("5_x6p42")
 volume_db = -8.696
 max_db = -7.109
+bus = &"Music"
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="SpotLights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 16.5139, 6.91675, -15.0922)
@@ -446,11 +449,13 @@ spot_angle = 19.47
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0838108, -1.03876, -12.8472)
 stream = ExtResource("5_224c1")
 volume_db = 4.211
+bus = &"Effects"
 
 [node name="Light" type="AudioStreamPlayer3D" parent="SpotLights/SpotLight3D2"]
 stream = ExtResource("5_x6p42")
 volume_db = -8.696
 max_db = -7.109
+bus = &"Music"
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="SpotLights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 16.5139, 6.91675, -9.88052)
@@ -466,11 +471,13 @@ spot_angle = 19.47
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0838108, -1.03876, -12.8472)
 stream = ExtResource("5_224c1")
 volume_db = 2.105
+bus = &"Effects"
 
 [node name="Light" type="AudioStreamPlayer3D" parent="SpotLights/SpotLight3D3"]
 stream = ExtResource("5_x6p42")
 volume_db = -8.696
 max_db = -7.109
+bus = &"Music"
 
 [node name="SpotLight3D4" type="SpotLight3D" parent="SpotLights"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 16.5139, 6.91675, -5.31384)
@@ -485,11 +492,13 @@ spot_angle = 19.47
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="SpotLights/SpotLight3D4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0721722, -1.24, -12.8414)
 stream = ExtResource("5_224c1")
+bus = &"Effects"
 
 [node name="Light" type="AudioStreamPlayer3D" parent="SpotLights/SpotLight3D4"]
 stream = ExtResource("5_x6p42")
 volume_db = -8.696
 max_db = -7.109
+bus = &"Music"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="SpotLights"]
 libraries = {
@@ -506,12 +515,26 @@ light_energy = 6.2
 shadow_enabled = true
 omni_range = 9.75441
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/OmniLight3D"]
+stream = ExtResource("5_x6p42")
+volume_db = -2.0
+max_db = -6.0
+autoplay = true
+bus = &"Music"
+
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.39917, 5.48306, 1.39878)
 light_color = Color(0.943875, 0.938244, 0.822878, 1)
 light_energy = 6.2
 shadow_enabled = true
 omni_range = 9.75441
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/OmniLight3D2"]
+stream = ExtResource("5_x6p42")
+volume_db = -2.0
+max_db = -6.0
+autoplay = true
+bus = &"Music"
 
 [node name="OmniLight3D3" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.55422, 5.48306, 1.39878)
@@ -520,6 +543,13 @@ light_energy = 6.2
 shadow_enabled = true
 omni_range = 9.75441
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/OmniLight3D3"]
+stream = ExtResource("5_x6p42")
+volume_db = -2.0
+max_db = -6.0
+autoplay = true
+bus = &"Music"
+
 [node name="OmniLight3D4" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.1874, 5.48306, 1.39878)
 light_color = Color(0.943875, 0.938244, 0.822878, 1)
@@ -527,12 +557,26 @@ light_energy = 1.8
 shadow_enabled = true
 omni_range = 9.75441
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/OmniLight3D4"]
+stream = ExtResource("5_x6p42")
+volume_db = -2.0
+max_db = -6.0
+autoplay = true
+bus = &"Music"
+
 [node name="OmniLight3D5" type="OmniLight3D" parent="Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.2427, 3.91494, 2.15217)
 light_color = Color(0.982349, 0.913898, 0.57694, 1)
 light_energy = 16.0
 shadow_enabled = true
 omni_range = 10.4257
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Lights/OmniLight3D5"]
+stream = ExtResource("5_x6p42")
+volume_db = -2.0
+max_db = -6.0
+autoplay = true
+bus = &"Music"
 
 [node name="big_button" parent="." instance=ExtResource("5_5tw7d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3821, 1.1, 1.81481)
@@ -553,12 +597,14 @@ shape = SubResource("BoxShape3D_msrxd")
 transform = Transform3D(-0.0533817, 0, -0.998574, 0, 1, 0, 0.998574, 0, -0.0533817, -14.632, 2.96376, 2.70327)
 billboard = 1
 text = "Use WASD to move"
+font = ExtResource("9_dmb50")
 font_size = 85
 
 [node name="Jump" type="Label3D" parent="."]
 transform = Transform3D(-0.0533817, 0, -0.998574, 0, 1, 0, 0.998574, 0, -0.0533817, -5.68193, 2.96376, 2.70327)
 billboard = 1
 text = "Use Space to jump"
+font = ExtResource("9_dmb50")
 font_size = 85
 
 [node name="Escape" type="Label3D" parent="."]
@@ -566,7 +612,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 20.394
 visible = false
 modulate = Color(0.988691, 0.549156, 0.413497, 1)
 outline_modulate = Color(0.351126, 0.180698, 7.21961e-08, 1)
-text = "Scape the [place]"
+text = "Scape the Garage"
+font = ExtResource("9_dmb50")
 font_size = 100
 uppercase = true
 

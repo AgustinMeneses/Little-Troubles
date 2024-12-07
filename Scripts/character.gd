@@ -27,6 +27,10 @@ func _ready():
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	$Min.emitting = false
 	$Max.emitting = false
+	$CanvasLayer/Control/Options.visible = false
+	$CanvasLayer/Control/Options.general.value = AudioServer.get_bus_volume_db(0)
+	$CanvasLayer/Control/Options.effects.value = AudioServer.get_bus_volume_db(1)
+	$CanvasLayer/Control/Options.music.value = AudioServer.get_bus_volume_db(2)
 	pass
 
 func _physics_process(delta):
@@ -36,7 +40,8 @@ func _physics_process(delta):
 	# Handle jump.
 	if can_move:	
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-			$jump.play()
+			$sounds/jump.play()
+			$"sounds/jump grunt".play()
 			velocity.y = JUMP_VELOCITY
 		
 		if Input.is_action_pressed("Shift"):
@@ -86,7 +91,6 @@ func _input(event):
 		is_picked_up=true
 	if event is InputEventMouseMotion:
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
-
 func _size(size:String):
 	if size == "small" and not is_small:
 		anim.play("Normal_to_small")

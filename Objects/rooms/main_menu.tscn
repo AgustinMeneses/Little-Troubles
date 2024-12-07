@@ -1,10 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bsacjcvmo4kah"]
+[gd_scene load_steps=23 format=3 uid="uid://bsacjcvmo4kah"]
 
 [ext_resource type="Script" path="res://Objects/rooms/main_menu.gd" id="1_3v1nl"]
 [ext_resource type="LabelSettings" uid="uid://0c70bl3qfa80" path="res://text_settings.tres" id="1_rtymg"]
 [ext_resource type="FontFile" uid="uid://yyp2l3s4qnye" path="res://Assets/FONTS/ominous-outlaw/Ominous Outlaw Free.otf" id="2_j8a6n"]
 [ext_resource type="PackedScene" uid="uid://cmmc1grsbix0j" path="res://Objects/door.tscn" id="3_0hcah"]
 [ext_resource type="Environment" uid="uid://c2gcjyhvtkain" path="res://Worl_eviroment.tres" id="4_7512d"]
+[ext_resource type="PackedScene" uid="uid://cek2lqan0b6m8" path="res://Objects/UI/options.tscn" id="4_hjcc4"]
 [ext_resource type="AudioStream" uid="uid://b0vlo8wfahwyu" path="res://Assets/Sounds/Main Menu Music.wav" id="6_kwxme"]
 [ext_resource type="AudioStream" uid="uid://s2gcmgieq2ru" path="res://Assets/Sounds/Main Menu Music 2.wav" id="7_gwoic"]
 
@@ -104,6 +105,20 @@ tracks/3/keys = {
 "method": &"change"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CSGBox3D2")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rfgb6"]
 _data = {
@@ -127,6 +142,30 @@ emission = Color(1, 1, 1, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_o55c0"]
 material = SubResource("StandardMaterial3D_cd214")
+
+[sub_resource type="Curve" id="Curve_6gjbu"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.10879, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_vgtqf"]
+curve = SubResource("Curve_6gjbu")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_en1dx"]
+emission_shape = 3
+emission_box_extents = Vector3(2, 1, 5)
+gravity = Vector3(0, 2, 0)
+scale_min = 0.01
+scale_max = 0.1
+scale_curve = SubResource("CurveTexture_vgtqf")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hodx1"]
+albedo_color = Color(0.906526, 0.987841, 1, 1)
+emission_enabled = true
+emission = Color(0.146157, 0.9079, 0.999999, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_5oo2q"]
+material = SubResource("StandardMaterial3D_hodx1")
 
 [node name="Main Menu" type="Node3D"]
 script = ExtResource("1_3v1nl")
@@ -200,11 +239,11 @@ split_offset = 9
 layout_mode = 2
 split_offset = 9
 
-[node name="Continue" type="Panel" parent="Control/Option Buttons"]
+[node name="SETTINGS" type="Panel" parent="Control/Option Buttons"]
 custom_minimum_size = Vector2(474, 80)
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Control/Option Buttons/Continue"]
+[node name="SETTINGS" type="Label" parent="Control/Option Buttons/SETTINGS"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -214,13 +253,13 @@ offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(0.755498, 0.755498)
-text = "Continue
+text = "Settings
 "
 label_settings = SubResource("LabelSettings_htwf6")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue Button" type="Button" parent="Control/Option Buttons/Continue"]
+[node name="Continue Button" type="Button" parent="Control/Option Buttons/SETTINGS"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -267,6 +306,14 @@ grow_horizontal = 2
 grow_vertical = 2
 flat = true
 
+[node name="Options" parent="Control" instance=ExtResource("4_hjcc4")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1112.0
+offset_bottom = 520.0
+can_press_esc = false
+
 [node name="door" parent="." instance=ExtResource("3_0hcah")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0.905584)
 
@@ -277,9 +324,21 @@ transform = Transform3D(-0.446888, 0, 0.89459, 0, 1, 0, -0.89459, 0, -0.446888, 
 environment = ExtResource("4_7512d")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.19473, 1.85613, 2.17477)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.80104, 1.85613, 2.17477)
 light_color = Color(0.79644, 1, 0.935109, 1)
 light_energy = 2.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64457, 1.49265, 0.408711)
+light_energy = 16.0
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64457, 1.49265, 0.408711)
+light_energy = 16.0
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.64457, 1.49265, 0.408711)
+light_energy = 16.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -287,9 +346,15 @@ libraries = {
 }
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.497459, 1.06769, 1.35681)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.8429, 0.42293, 2.24618)
 flip_faces = true
-size = Vector3(7.57021, 4.43811, 7.05298)
+size = Vector3(20.2509, 13.3921, 17.1616)
+material = SubResource("StandardMaterial3D_oanx6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.13636, 0.42293, 2.24618)
+flip_faces = true
+size = Vector3(4.29242, 13.3921, 17.1616)
 material = SubResource("StandardMaterial3D_oanx6")
 
 [node name="MeshInstance3D5" type="MeshInstance3D" parent="."]
@@ -302,16 +367,26 @@ mesh = SubResource("BoxMesh_o55c0")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kwxme")
-volume_db = -14.696
+volume_db = -4.522
 autoplay = true
+bus = &"Music"
 
 [node name="Music2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_gwoic")
 volume_db = -80.0
 autoplay = true
+bus = &"Music"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.843142, -1.52098, 1.43989)
+amount = 20
+lifetime = 5.0
+visibility_aabb = AABB(-4, -4, -5.21526, 8, 8, 10.4305)
+process_material = SubResource("ParticleProcessMaterial_en1dx")
+draw_pass_1 = SubResource("SphereMesh_5oo2q")
 
 [connection signal="pressed" from="Control/Option Buttons/New Game/New Game Button" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="Control/Option Buttons/Continue/Continue Button" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="Control/Option Buttons/SETTINGS/Continue Button" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="Control/Option Buttons/Exit/Exit Button" to="." method="_on_exit_button_pressed"]
 [connection signal="finished" from="Music" to="." method="_on_audio_stream_player_finished"]
 [connection signal="finished" from="Music2" to="." method="_on_music_2_finished"]
