@@ -14,28 +14,24 @@ func _ready():
 	set_process(false)
 	$Max.emitting = false
 	pass # Replace with function body.
-
 func _process(_delta):
 	#print(mass)
 	if player_marker==null: return
 	global_position=player_marker.global_position
 	rotation = player.rotation
 	pass
-
 func _picked_up(marker:Marker3D):
 	player_marker=marker
 	player = marker.get_parent()
 	collision.disabled=true
 	set_process(true)
 	pass
-
 func dropped_off():
 	collision.disabled=false
 	player_marker=null
 	player = null
 	position.x+=2
 	set_process(false)
-
 func _size(size:String, player : CharacterBody3D):
 	if size == "big" and not is_big:
 		anim.play("normal_to_big")

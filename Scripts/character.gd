@@ -27,10 +27,10 @@ func _ready():
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	$Min.emitting = false
 	$Max.emitting = false
-	$CanvasLayer/Control/Options.visible = false
-	$CanvasLayer/Control/Options.general.value = AudioServer.get_bus_volume_db(0)
-	$CanvasLayer/Control/Options.effects.value = AudioServer.get_bus_volume_db(1)
-	$CanvasLayer/Control/Options.music.value = AudioServer.get_bus_volume_db(2)
+	$CanvasLayer/UI/Options.visible = false
+	$CanvasLayer/UI/Options.general.value = AudioServer.get_bus_volume_db(0)
+	$CanvasLayer/UI/Options.effects.value = AudioServer.get_bus_volume_db(1)
+	$CanvasLayer/UI/Options.music.value = AudioServer.get_bus_volume_db(2)
 	pass
 
 func _physics_process(delta):

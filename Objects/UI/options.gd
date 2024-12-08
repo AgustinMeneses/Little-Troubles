@@ -22,10 +22,6 @@ func _on_music_value_changed(value):
 func _input(_event):
 	if Input.is_action_just_pressed("esc") and can_press_esc:
 		if visible:
-			get_tree().paused = false
 			visible = false
-			Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
-		elif not visible:
-			get_tree().paused = true
-			Input.mouse_mode=Input.MOUSE_MODE_VISIBLE
-			visible = true
+			get_parent().option_buttons.modulate = Color(1,1,1)
+			get_parent().label.modulate = Color(1,1,1)
