@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://yyp2l3s4qnye" path="res://Assets/FONTS/ominous-outlaw/Ominous Outlaw Free.otf" id="2_j8a6n"]
 [ext_resource type="PackedScene" uid="uid://cmmc1grsbix0j" path="res://Objects/door.tscn" id="3_0hcah"]
 [ext_resource type="Environment" uid="uid://c2gcjyhvtkain" path="res://Worl_eviroment.tres" id="4_7512d"]
-[ext_resource type="PackedScene" uid="uid://cek2lqan0b6m8" path="res://Objects/UI/options.tscn" id="4_hjcc4"]
+[ext_resource type="PackedScene" path="res://Objects/UI/options.tscn" id="4_hjcc4"]
 [ext_resource type="AudioStream" uid="uid://b0vlo8wfahwyu" path="res://Assets/Sounds/Main Menu Music.wav" id="6_kwxme"]
 [ext_resource type="AudioStream" uid="uid://s2gcmgieq2ru" path="res://Assets/Sounds/Main Menu Music 2.wav" id="7_gwoic"]
 
@@ -369,13 +369,11 @@ mesh = SubResource("BoxMesh_o55c0")
 stream = ExtResource("6_kwxme")
 volume_db = -4.522
 autoplay = true
-bus = &"Music"
 
 [node name="Music2" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_gwoic")
 volume_db = -80.0
 autoplay = true
-bus = &"Music"
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.843142, -1.52098, 1.43989)

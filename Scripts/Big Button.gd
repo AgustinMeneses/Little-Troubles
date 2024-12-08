@@ -9,8 +9,6 @@ class_name size_button
 var player:CharacterBody3D
 var player_object:RigidBody3D
 
-@onready var marker_3d = $Marker3D
-
 func _process(delta):
 	if player==null: return
 	if not player.is_picked_up:

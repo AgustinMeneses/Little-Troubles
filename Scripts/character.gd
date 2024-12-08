@@ -16,7 +16,7 @@ var is_small : bool = false
 
 @onready var anim = $AnimationPlayer
 @onready var head = $MeshInstance3D
-@onready var camera:Camera3D = $MeshInstance3D/Camera3D
+@onready var camera:Camera3D = $MeshInstance3D/SpringArm3D/Camera3D
 @onready var self_marker = $"PickUp Marker"
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
