@@ -1,6 +1,16 @@
-[gd_resource type="Environment" format=3 uid="uid://c2gcjyhvtkain"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://c2gcjyhvtkain"]
+
+[ext_resource type="Texture2D" uid="uid://dw74xs0sbvkvt" path="res://Assets/panorama.jpg" id="1_6iwgl"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8h2mu"]
+panorama = ExtResource("1_6iwgl")
+
+[sub_resource type="Sky" id="Sky_bxm5d"]
+sky_material = SubResource("PanoramaSkyMaterial_8h2mu")
 
 [resource]
+background_mode = 2
+sky = SubResource("Sky_bxm5d")
 ssao_enabled = true
 ssao_intensity = 3.56
 ssil_enabled = true
@@ -12,8 +22,10 @@ sdfgi_energy = 0.7
 glow_enabled = true
 glow_normalized = true
 glow_strength = 1.26
+fog_light_energy = 0.37
+fog_density = 0.2205
 volumetric_fog_enabled = true
 volumetric_fog_density = 0.01
 adjustment_enabled = true
 adjustment_contrast = 1.19
-adjustment_saturation = 1.58
+adjustment_saturation = 2.0
