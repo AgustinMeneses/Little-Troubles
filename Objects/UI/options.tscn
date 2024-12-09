@@ -1,0 +1,158 @@
+[gd_scene load_steps=5 format=3 uid="uid://cek2lqan0b6m8"]
+
+[ext_resource type="FontFile" uid="uid://w73s15g4cqdn" path="res://Assets/FONTS/mistaken/Mistaken.otf" id="1_q3g01"]
+[ext_resource type="Script" path="res://Scripts/UI/options.gd" id="1_v785k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bcjlm"]
+font = ExtResource("1_q3g01")
+font_size = 100
+font_color = Color(0.483987, 1, 0.817566, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_m306o"]
+font = ExtResource("1_q3g01")
+font_size = 100
+
+[node name="Options" type="Panel"]
+process_mode = 3
+self_modulate = Color(0.0645404, 0.281674, 0, 1)
+anchors_preset = -1
+anchor_left = 0.0208333
+anchor_top = 0.0987654
+anchor_right = 0.986111
+anchor_bottom = 0.901235
+script = ExtResource("1_v785k")
+metadata/_edit_use_anchors_ = true
+
+[node name="Music" type="HSlider" parent="."]
+self_modulate = Color(0, 0.759015, 0.663882, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.241007
+anchor_top = 0.907692
+anchor_right = 0.757338
+anchor_bottom = 0.951858
+offset_right = -174.16
+offset_bottom = -6.9664
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.4354, 1.4354)
+min_value = -50.0
+max_value = 10.0
+step = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Music"]
+layout_mode = 0
+anchor_top = -3.43184
+anchor_right = 0.998036
+anchor_bottom = -0.0847652
+offset_right = 338.786
+offset_bottom = 45.4468
+scale = Vector2(0.540941, 0.540941)
+text = "MUSIC"
+label_settings = SubResource("LabelSettings_bcjlm")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Effects" type="HSlider" parent="."]
+self_modulate = Color(0, 0.759015, 0.663882, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.241007
+anchor_top = 0.676923
+anchor_right = 0.758978
+anchor_bottom = 0.72123
+offset_right = -175.984
+offset_bottom = -7.03937
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.43996, 1.43996)
+min_value = -40.0
+max_value = 20.0
+step = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Effects"]
+layout_mode = 0
+anchor_top = -3.43184
+anchor_right = 0.998036
+anchor_bottom = -0.0847652
+offset_right = 338.786
+offset_bottom = 45.4468
+scale = Vector2(0.540941, 0.540941)
+text = "SFX
+"
+label_settings = SubResource("LabelSettings_bcjlm")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="General" type="HSlider" parent="."]
+self_modulate = Color(0, 0.759015, 0.663882, 1)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.241007
+anchor_top = 0.446154
+anchor_right = 0.758978
+anchor_bottom = 0.49046
+offset_right = -175.984
+offset_bottom = -7.03937
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.43996, 1.43996)
+min_value = -50.0
+max_value = 0.0
+step = 0.0
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="General"]
+layout_mode = 0
+anchor_top = -3.47231
+anchor_right = 0.998036
+anchor_bottom = 3.32326
+offset_right = 338.786
+offset_bottom = 92.2709
+scale = Vector2(0.540941, 0.540941)
+text = "general
+
+"
+label_settings = SubResource("LabelSettings_bcjlm")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.0359712
+anchor_right = 0.956513
+anchor_bottom = 0.306495
+offset_right = -233.643
+offset_bottom = -36.3773
+grow_horizontal = 2
+scale = Vector2(1.29575, 1.29575)
+text = "Sound settings"
+label_settings = SubResource("LabelSettings_m306o")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label2" type="Label" parent="."]
+layout_mode = 0
+anchor_left = 0.798561
+anchor_top = 0.938462
+anchor_right = 0.989437
+anchor_bottom = 0.989613
+offset_right = 577.746
+offset_bottom = 72.4011
+scale = Vector2(0.268676, 0.268676)
+text = "press esc to get out"
+label_settings = SubResource("LabelSettings_m306o")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="value_changed" from="Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="Effects" to="." method="_on_effects_value_changed"]
+[connection signal="value_changed" from="General" to="." method="_on_general_value_changed"]

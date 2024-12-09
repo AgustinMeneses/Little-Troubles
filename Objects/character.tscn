@@ -1,0 +1,686 @@
+[gd_scene load_steps=34 format=3 uid="uid://blhbsl22buq0u"]
+
+[ext_resource type="Script" path="res://Scripts/character.gd" id="1_ybuai"]
+[ext_resource type="AudioStream" uid="uid://dl6phr6qyukb8" path="res://Assets/Sounds/walking.mp3" id="2_spbdt"]
+[ext_resource type="AudioStream" uid="uid://bkljcgdhk3pjm" path="res://Assets/Sounds/Jump.mp3" id="3_pp7em"]
+[ext_resource type="AudioStream" uid="uid://b6yllxt4yw4ls" path="res://Assets/Sounds/size up.mp3" id="4_w8icv"]
+[ext_resource type="AudioStream" uid="uid://bx5y8efismxyq" path="res://Assets/Sounds/size down.mp3" id="5_buhrv"]
+[ext_resource type="AudioStream" uid="uid://2jwjuqp4s4vj" path="res://Assets/Sounds/jump grunt.mp3" id="6_so7m4"]
+[ext_resource type="PackedScene" uid="uid://cek2lqan0b6m8" path="res://Objects/UI/options.tscn" id="7_1qkue"]
+[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="7_7wd0l"]
+[ext_resource type="FontFile" uid="uid://yyp2l3s4qnye" path="res://Assets/FONTS/ominous-outlaw/Ominous Outlaw Free.otf" id="7_dlnrj"]
+[ext_resource type="FontFile" uid="uid://w73s15g4cqdn" path="res://Assets/FONTS/mistaken/Mistaken.otf" id="10_82too"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0qo"]
+albedo_color = Color(0.548035, 0.387411, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_u2f7f"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_pc0qo")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_b623a"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wfhwn"]
+radius = 1.0
+
+[sub_resource type="Curve" id="Curve_fh5y3"]
+_data = [Vector2(0, 1), 0.0, 1.23214, 0, 0, Vector2(0.652174, 0), -2.93187, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_wj4un"]
+curve = SubResource("Curve_fh5y3")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wlugc"]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 100, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_wj4un")
+turbulence_noise_strength = 1.9
+turbulence_noise_scale = 1.135
+turbulence_noise_speed_random = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h884k"]
+albedo_color = Color(9.62615e-07, 0.552231, 0.811854, 1)
+emission_enabled = true
+emission = Color(0, 0.481714, 0.777933, 1)
+emission_energy_multiplier = 16.0
+
+[sub_resource type="BoxMesh" id="BoxMesh_86k7y"]
+material = SubResource("StandardMaterial3D_h884k")
+
+[sub_resource type="Curve" id="Curve_8y7ns"]
+_data = [Vector2(0, 1), 0.0, 1.02586, 0, 0, Vector2(0.615942, 0.010989), -2.70801, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_6m82f"]
+curve = SubResource("Curve_8y7ns")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qwopl"]
+spread = 180.0
+flatness = 1.0
+initial_velocity_min = 2.0
+initial_velocity_max = 7.0
+gravity = Vector3(0, 100, 0)
+scale_min = 0.2
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_6m82f")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xho4e"]
+albedo_color = Color(0.684175, 0, 0.0695709, 1)
+emission_enabled = true
+emission = Color(0.563631, 0.110676, 1.44392e-07, 1)
+emission_energy_multiplier = 14.56
+backlight = Color(1, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_n185m"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_xho4e")
+
+[sub_resource type="Animation" id="Animation_75itv"]
+resource_name = "Normal_to_small"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D/SpringArm3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0.1, 0.1, 0.1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D/SpringArm3D/Camera3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.0758694, 0, 0), Vector3(0.785398, 0.0010242, 0.000122413)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Min:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sounds/size down:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_jdbxc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sounds/walking:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sounds/walking:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("sounds/jump:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("sounds/size up:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("sounds/size down:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_02n8q"]
+resource_name = "falling"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sounds/jump:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_hw4ba"]
+resource_name = "small_to_normal"
+length = 1.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MeshInstance3D/SpringArm3D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.1, 0.1, 0.1), Vector3(1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("MeshInstance3D/SpringArm3D/Camera3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.785398, 0.0010242, 0.000122413), Vector3(-0.0750492, 0.00174533, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Max:emitting")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("sounds/size up:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_toi6q"]
+resource_name = "sprint"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sounds/walking:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sounds/walking:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.32]
+}
+
+[sub_resource type="Animation" id="Animation_n5y2a"]
+resource_name = "walking"
+length = 0.55
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("sounds/walking:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.176777),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("sounds/walking:pitch_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.9]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ahk4q"]
+_data = {
+"Normal_to_small": SubResource("Animation_75itv"),
+"RESET": SubResource("Animation_jdbxc"),
+"falling": SubResource("Animation_02n8q"),
+"small_to_normal": SubResource("Animation_hw4ba"),
+"sprint": SubResource("Animation_toi6q"),
+"walking": SubResource("Animation_n5y2a")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_v452b"]
+font = ExtResource("7_dlnrj")
+font_size = 100
+
+[sub_resource type="LabelSettings" id="LabelSettings_bwqxe"]
+font = ExtResource("10_82too")
+font_size = 100
+
+[node name="Character" type="CharacterBody3D"]
+collision_mask = 27
+script = ExtResource("1_ybuai")
+JUMP_VELOCITY = 5
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_u2f7f")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="MeshInstance3D"]
+transform = Transform3D(0.999998, 0.00117512, -0.000364337, -0.000786797, 0.838493, 0.544911, 0.000945828, -0.54491, 0.838493, 0, 0, 0)
+collision_mask = 255
+spring_length = 3.5
+margin = 0.5
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D/SpringArm3D"]
+transform = Transform3D(100, 0, 0, 0, 99.7123, 7.57966, 0, -7.57966, 99.7123, 2.32831e-10, 0.0526738, 3.60517)
+fov = 99.7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_b623a")
+
+[node name="PickUpArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpArea"]
+shape = SubResource("SphereShape3D_wfhwn")
+
+[node name="Min" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.00308, 0)
+amount = 9
+lifetime = 0.5
+randomness = 1.0
+visibility_aabb = AABB(-4.50195, -4, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_wlugc")
+draw_pass_1 = SubResource("BoxMesh_86k7y")
+
+[node name="Max" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.977918, 0)
+emitting = false
+amount = 12
+lifetime = 0.5
+randomness = 1.0
+visibility_aabb = AABB(-4, -3.86621, -4, 8, 8, 8)
+process_material = SubResource("ParticleProcessMaterial_qwopl")
+draw_pass_1 = SubResource("BoxMesh_n185m")
+
+[node name="PickUp Marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.872777, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ahk4q")
+}
+
+[node name="sounds" type="Node3D" parent="."]
+
+[node name="walking" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("2_spbdt")
+volume_db = -5.652
+pitch_scale = 0.9
+bus = &"Effects"
+
+[node name="jump" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("3_pp7em")
+volume_db = 5.652
+pitch_scale = 1.52
+bus = &"Effects"
+
+[node name="size up" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("4_w8icv")
+bus = &"Effects"
+
+[node name="size down" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("5_buhrv")
+bus = &"Effects"
+
+[node name="jump grunt" type="AudioStreamPlayer" parent="sounds"]
+stream = ExtResource("6_so7m4")
+volume_db = -3.0
+bus = &"Effects"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_7wd0l")
+
+[node name="Panel" type="Panel" parent="CanvasLayer/UI"]
+self_modulate = Color(0, 0.74902, 0.729412, 0.611765)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Option Buttons" type="GridContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -237.0
+offset_top = -138.0
+offset_right = 237.0
+offset_bottom = 230.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
+custom_minimum_size = Vector2(474, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Option Buttons/Resume"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 153.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.755498, 0.755498)
+text = "Resume
+"
+label_settings = SubResource("LabelSettings_v452b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Resume Button" type="Button" parent="CanvasLayer/UI/Option Buttons/Resume"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+split_offset = 9
+
+[node name="VSplitContainer6" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+split_offset = 9
+
+[node name="VSplitContainer4" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+split_offset = 9
+
+[node name="SETTINGS" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
+custom_minimum_size = Vector2(474, 80)
+layout_mode = 2
+
+[node name="SETTINGS" type="Label" parent="CanvasLayer/UI/Option Buttons/SETTINGS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 153.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.755498, 0.755498)
+text = "Settings
+"
+label_settings = SubResource("LabelSettings_v452b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Settings Button" type="Button" parent="CanvasLayer/UI/Option Buttons/SETTINGS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="VSplitContainer2" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+
+[node name="VSplitContainer5" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+
+[node name="VSplitContainer3" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+
+[node name="Back_to Menu" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
+custom_minimum_size = Vector2(474, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Option Buttons/Back_to Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 153.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.755498, 0.755498)
+text = "back to menu"
+label_settings = SubResource("LabelSettings_v452b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Back to menuButton" type="Button" parent="CanvasLayer/UI/Option Buttons/Back_to Menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="VSplitContainer7" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+
+[node name="VSplitContainer8" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+
+[node name="VSplitContainer9" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
+layout_mode = 2
+
+[node name="Exit" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
+custom_minimum_size = Vector2(474, 80)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/Option Buttons/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 153.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.755498, 0.755498)
+text = "Exit Game
+"
+label_settings = SubResource("LabelSettings_v452b")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Exit Button" type="Button" parent="CanvasLayer/UI/Option Buttons/Exit"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+flat = true
+
+[node name="Label" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -516.0
+offset_top = 20.0
+offset_right = 274.0
+offset_bottom = 143.0
+grow_horizontal = 2
+scale = Vector2(1.29575, 1.29575)
+text = "Settings"
+label_settings = SubResource("LabelSettings_bwqxe")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Options" parent="CanvasLayer/UI" instance=ExtResource("7_1qkue")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -556.0
+offset_top = -260.0
+offset_right = 556.0
+offset_bottom = 260.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="PickUpArea" to="." method="_on_pick_up_area_body_entered"]
+[connection signal="body_exited" from="PickUpArea" to="." method="_on_pick_up_area_body_exited"]
+[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/Resume/Resume Button" to="CanvasLayer/UI" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/SETTINGS/Settings Button" to="CanvasLayer/UI" method="_on_settings_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/Back_to Menu/Back to menuButton" to="CanvasLayer/UI" method="_on_back_to_menu_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/Exit/Exit Button" to="CanvasLayer/UI" method="_on_exit_button_pressed"]
