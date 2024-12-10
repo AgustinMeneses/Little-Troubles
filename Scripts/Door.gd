@@ -14,7 +14,7 @@ func _input(_event):
 			anim.play("open")
 			actual_state=states[0]
 
-func _on_close_the_door_body_entered(body):
+func _on_close_the_door_body_entered(_body):
 	if available:
 		level_completed=true
 		anim.play("close")

@@ -1,7 +1,13 @@
+<<<<<<< HEAD
 [gd_resource type="AudioBusLayout" format=3 uid="uid://cfry7j1sjn5gj"]
 
 [resource]
 bus/0/send = &"Effects"
+=======
+[gd_resource type="AudioBusLayout" format=3 uid="uid://d114q7iq7j13n"]
+
+[resource]
+>>>>>>> c3032441e95fd31165f15359aefe79a2a1134387
 bus/1/name = &"Effects"
 bus/1/solo = false
 bus/1/mute = false

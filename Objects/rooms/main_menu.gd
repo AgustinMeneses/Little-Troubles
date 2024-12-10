@@ -28,6 +28,6 @@ func _on_music_2_finished():
 	$Music.play()
 	$Music2.play()
 	pass # Replace with function body.
-func _input(event):
+func _input(_event):
 	if Input.is_action_just_pressed("esc") and $Control/Options.visible:
 		$Control/Options.visible= false
