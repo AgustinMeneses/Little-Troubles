@@ -3,8 +3,8 @@ extends CharacterBody3D
 var fuerza:float=5
 #var object=null
 var object:Array[RigidBody3D]=[]
+var flashlight : StaticBody3D
 var is_picked_up=false
-
 const walk_speed=5.5
 const sprint_speed= 9
 var speed
@@ -18,7 +18,9 @@ var is_small : bool = false
 @onready var head = $MeshInstance3D
 @onready var camera:Camera3D = $MeshInstance3D/Camera3D
 @onready var self_marker = $"PickUp Marker"
+@onready var lintern_marker = $"Lintern Marker"
 
+ 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -41,6 +43,8 @@ func _physics_process(delta):
 	if can_move:	
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			$sounds/jump.play()
+			var random_pitch = randf_range(0.8 , 1.2)
+			$"sounds/jump grunt".pitch_scale = random_pitch
 			$"sounds/jump grunt".play()
 			velocity.y = JUMP_VELOCITY
 		
@@ -72,9 +76,12 @@ func _on_pick_up_area_body_entered(body):
 	body.pick.visible=true
 	if body.is_in_group("objetos"):
 		object.append(body)
+	elif body.is_in_group("flashlight"):
+		flashlight = body
 	pass # Replace with function body
 func _on_pick_up_area_body_exited(body):
-	body.pick.visible=false
+	if body.pick == Sprite3D:
+		body.pick.visible= false
 	if body.is_in_group("objetos"):
 		if not body.collision.disabled:
 			object.erase(body)
@@ -89,8 +96,12 @@ func _input(event):
 			return
 		object.front()._picked_up(self_marker)
 		is_picked_up=true
+	if Input.is_action_just_pressed("E") and flashlight:
+		flashlight._picked_up(lintern_marker)
+		flashlight = null
 	if event is InputEventMouseMotion:
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
+
 func _size(size:String):
 	if size == "small" and not is_small:
 		anim.play("Normal_to_small")

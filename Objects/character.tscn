@@ -394,7 +394,7 @@ JUMP_VELOCITY = 5
 mesh = SubResource("BoxMesh_u2f7f")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="MeshInstance3D"]
-transform = Transform3D(0.999998, 0.00117512, -0.000364337, -0.000786797, 0.838493, 0.544911, 0.000945828, -0.54491, 0.838493, 0, 0, 0)
+transform = Transform3D(0.999999, 0.00117512, -0.000364338, -0.000786798, 0.838493, 0.544911, 0.00094583, -0.544911, 0.838494, 0, 0, 0)
 collision_mask = 255
 spring_length = 3.5
 margin = 0.5
@@ -408,7 +408,7 @@ shape = SubResource("BoxShape3D_b623a")
 
 [node name="PickUpArea" type="Area3D" parent="."]
 collision_layer = 4
-collision_mask = 8
+collision_mask = 40
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpArea"]
 shape = SubResource("SphereShape3D_wfhwn")
@@ -434,6 +434,9 @@ draw_pass_1 = SubResource("BoxMesh_n185m")
 
 [node name="PickUp Marker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.872777, 0, 0)
+
+[node name="Lintern Marker" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.670026, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

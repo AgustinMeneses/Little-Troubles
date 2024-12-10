@@ -10,7 +10,6 @@ func _ready():
 
 func _on_area_3d_body_entered(body:CharacterBody3D):
 	if body.is_in_group("Player") and can_animation:
-		#$Escape.visible = true
 		animation_player.play("SpotLights")
 		can_animation = false
 		await  animation_player.animation_finished
