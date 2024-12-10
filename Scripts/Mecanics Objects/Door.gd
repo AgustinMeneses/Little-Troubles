@@ -1,4 +1,5 @@
 extends	StaticBody3D
+@export var next_level : String
 @onready var anim = $AnimationPlayer
 @onready var pick= $Sprite3D
 var actual_state:String="closed"
@@ -17,5 +18,5 @@ func _on_close_the_door_body_entered(body):
 		available=false
 		await anim.animation_finished
 		pick.texture=null
-		get_parent().level_completed()
+		get_parent().level_completed(next_level)
 	pass # Replace with function body.

@@ -94,14 +94,14 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("MeshInstance3D:scale")
+tracks/3/path = NodePath("MeshInstance3D/SpotLight3D:light_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.334594, 0.334594, 0.334594)]
+"values": [Color(0.92549, 0.901961, 0.596078, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_1itxq"]
@@ -109,29 +109,29 @@ resource_name = "normal_to_small"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/path = NodePath("MeshInstance3D/SpotLight3D:light_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.334594, 0.334594, 0.334594), Vector3(0.1, 0.1, 0.1)]
+"values": [Color(0.92549, 0.901961, 0.596078, 1), Color(0.71853, 0.9387, 0.909288, 1)]
 }
 
-[sub_resource type="Animation" id="Animation_hxff2"]
-resource_name = "small_to_normal"
+[sub_resource type="Animation" id="Animation_mpvyd"]
+resource_name = "small_to_norma"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/path = NodePath("MeshInstance3D/SpotLight3D:light_color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(0.1, 0.1, 0.1), Vector3(0.334594, 0.334594, 0.334594)]
+"values": [Color(0.71853, 0.9387, 0.909288, 1), Color(0.923988, 0.903694, 0.597987, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hnxdn"]
@@ -139,7 +139,7 @@ _data = {
 "Idle": SubResource("Animation_3e3tt"),
 "RESET": SubResource("Animation_msn0f"),
 "normal_to_small": SubResource("Animation_1itxq"),
-"small_to_normal": SubResource("Animation_hxff2")
+"small_to_norma": SubResource("Animation_mpvyd")
 }
 
 [node name="Flashlight" type="StaticBody3D"]
@@ -148,12 +148,13 @@ collision_mask = 0
 script = ExtResource("1_adb24")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.334594, 0, 0, 0, -1.46256e-08, -0.334594, 0, 0.334594, -1.46256e-08, 0, 0, 0)
+transform = Transform3D(0.334594, 0, 0, 0, -1.21123e-06, -0.334594, 0, 0.334594, -1.21123e-06, 0, 0, 0)
 mesh = SubResource("CylinderMesh_5vbhj")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-light_energy = 16.0
+light_color = Color(0.92549, 0.901961, 0.596078, 1)
+light_energy = 0.5
 spot_range = 44.9381
 spot_attenuation = 0.707106
 spot_angle = 22.583
@@ -167,7 +168,7 @@ texture_filter = 0
 texture = ExtResource("2_ls0up")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(0.334594, 0, 0, 0, -1.46256e-08, -0.334594, 0, 0.334594, -1.46256e-08, 0, 0, 0)
+transform = Transform3D(0.334594, 0, 0, 0, -1.21123e-06, -0.334594, 0, 0.334594, -1.21123e-06, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_osx8y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -175,3 +176,8 @@ libraries = {
 "": SubResource("AnimationLibrary_hnxdn")
 }
 autoplay = "Idle"
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.82257, 0.174577, -2.46005)
+visible = false
+size = Vector3(7.81104, 6.31787, 0.212292)

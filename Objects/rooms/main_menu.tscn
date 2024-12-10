@@ -431,7 +431,7 @@ mesh = SubResource("BoxMesh_o55c0")
 
 [node name="Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("6_kwxme")
-volume_db = -4.522
+volume_db = -8.0
 autoplay = true
 bus = &"Music"
 

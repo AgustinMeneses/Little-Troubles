@@ -16,6 +16,7 @@ func _on_area_3d_body_entered(body:CharacterBody3D):
 		$"Invisible wall".queue_free()
 	pass # Replace with function body.
 
-func level_completed():
+func level_completed(next_level : String):
 	GameManager.level_completed(level_name)
-	get_tree().change_scene_to_file("res://Objects/rooms/main_menu.tscn")
+	get_tree().change_scene_to_file(next_level)
+	#get_tree().change_scene_to_file("res://Objects/rooms/staris_level.tscn")

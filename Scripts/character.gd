@@ -1,4 +1,4 @@
-extends CharacterBody3D
+class_name Player extends CharacterBody3D
 
 var fuerza:float=5
 #var object=null
@@ -16,11 +16,12 @@ var is_small : bool = false
 
 @onready var anim = $AnimationPlayer
 @onready var head = $MeshInstance3D
-@onready var camera:Camera3D = $MeshInstance3D/Camera3D
 @onready var self_marker = $"PickUp Marker"
 @onready var lintern_marker = $"Lintern Marker"
+@onready var ray_cast: RayCast3D = $RayCast3D
 
- 
+enum states {chiquito , normal}
+var stados = states.normal
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -29,10 +30,11 @@ func _ready():
 	Input.mouse_mode=Input.MOUSE_MODE_CAPTURED
 	$Min.emitting = false
 	$Max.emitting = false
-	$CanvasLayer/UI/Options.visible = false
-	$CanvasLayer/UI/Options.general.value = AudioServer.get_bus_volume_db(0)
-	$CanvasLayer/UI/Options.effects.value = AudioServer.get_bus_volume_db(1)
-	$CanvasLayer/UI/Options.music.value = AudioServer.get_bus_volume_db(2)
+	$"CanvasLayer/UI/Options".visible = false
+	$CanvasLayer/UI/Messages/Label.visible = false
+	$"CanvasLayer/UI/Options".general.value = AudioServer.get_bus_volume_db(0)
+	$"CanvasLayer/UI/Options".effects.value = AudioServer.get_bus_volume_db(1)
+	$"CanvasLayer/UI/Options".music.value = AudioServer.get_bus_volume_db(2)
 	pass
 
 func _physics_process(delta):
@@ -43,8 +45,12 @@ func _physics_process(delta):
 	if can_move:	
 		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 			$sounds/jump.play()
-			var random_pitch = randf_range(0.8 , 1.2)
-			$"sounds/jump grunt".pitch_scale = random_pitch
+			if stados == states.normal:
+				var random_pitch = randf_range(0.8 , 1.2)
+				$"sounds/jump grunt".pitch_scale = random_pitch
+			else:
+				var random_pitch = randf_range(1.9 , 2.2)
+				$"sounds/jump grunt".pitch_scale = random_pitch
 			$"sounds/jump grunt".play()
 			velocity.y = JUMP_VELOCITY
 		
@@ -80,7 +86,7 @@ func _on_pick_up_area_body_entered(body):
 		flashlight = body
 	pass # Replace with function body
 func _on_pick_up_area_body_exited(body):
-	if body.pick == Sprite3D:
+	if body.pick != null:
 		body.pick.visible= false
 	if body.is_in_group("objetos"):
 		if not body.collision.disabled:
@@ -94,24 +100,30 @@ func _input(event):
 			object.erase(object.front())
 			is_picked_up=false
 			return
-		object.front()._picked_up(self_marker)
+		object.front()._picked_up(self_marker, self)
 		is_picked_up=true
-	if Input.is_action_just_pressed("E") and flashlight:
+	if Input.is_action_just_pressed("E") and flashlight.pick != null:
 		flashlight._picked_up(lintern_marker)
-		flashlight = null
 	if event is InputEventMouseMotion:
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
 
 func _size(size:String):
 	if size == "small" and not is_small:
+		stados = states.chiquito
 		anim.play("Normal_to_small")
+		flashlight._change_colors("smol")
 		is_small = true
 		can_move = false
 		await anim.animation_finished
 		can_move = true
 	elif size == "normal" and is_small:
+		stados = states.normal
 		anim.play("small_to_normal")
+		flashlight._change_colors("big")
 		is_small = false
 		can_move = false
 		await anim.animation_finished
 		can_move = true
+
+func _text(text:String):
+	$CanvasLayer/UI.show_text(text)

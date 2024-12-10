@@ -5,7 +5,7 @@ class_name Pickable
 @onready var collision = $CollisionShape3D
 @onready var anim = $AnimationPlayer
 
-var player : CharacterBody3D
+var player : Player
 var player_marker:Marker3D
 var is_big : bool = false
 # Called when the node enters the scene tree for the first time.
@@ -15,22 +15,29 @@ func _ready():
 	$Max.emitting = false
 	pass # Replace with function body.
 func _process(_delta):
-	#print(mass)
 	if player_marker==null: return
-	global_position=player_marker.global_position
 	rotation = player.rotation
+	if player.ray_cast.is_colliding():
+		var player_marker_2 = player.get_node("PickUp Marker2")
+		global_position = player_marker_2.global_position
+		return
+	global_position=player_marker.global_position
 	pass
-func _picked_up(marker:Marker3D):
+func _picked_up(marker:Marker3D, the_player):
 	player_marker=marker
-	player = marker.get_parent()
+	player = the_player
+	if player.stados == 0:
+		player._text("NO SE PUEDE AGARRAR OBJETOS MIENTRAS SOS CHIQUITO")
+		return
 	collision.disabled=true
 	set_process(true)
 	pass
-func dropped_off():
+func dropped_off(): 
 	collision.disabled=false
 	player_marker=null
 	player = null
 	position.x+=2
+	position.y -=3
 	set_process(false)
 func _size(size:String, player : CharacterBody3D):
 	if size == "big" and not is_big:

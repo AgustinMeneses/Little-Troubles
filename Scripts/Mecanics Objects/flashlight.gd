@@ -24,3 +24,9 @@ func _picked_up(marker:Marker3D):
 	$MeshInstance3D/SpotLight3D.light_energy = 16
 	$AnimationPlayer.stop()
 	pass
+
+func _change_colors(size):
+	if size == "smol":
+		$AnimationPlayer.play("normal_to_small")
+	else:
+		$AnimationPlayer.play("small_to_norma")

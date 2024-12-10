@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://cjnh80pyhu45b"]
+[gd_scene load_steps=19 format=3 uid="uid://cjnh80pyhu45b"]
 
 [ext_resource type="MeshLibrary" uid="uid://bj8xch6lx5nv4" path="res://Tile Set.tres" id="1_3ljjq"]
 [ext_resource type="Script" path="res://Scripts/Level/tutorial_level.gd" id="1_qfp4h"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://cgylqrdfno3ee" path="res://Assets/Sprite.png" id="9_a1x8x"]
 [ext_resource type="FontFile" uid="uid://w73s15g4cqdn" path="res://Assets/FONTS/mistaken/Mistaken.otf" id="9_dmb50"]
 [ext_resource type="PackedScene" uid="uid://cmmc1grsbix0j" path="res://Objects/Mecanics objects/door.tscn" id="13_rtug8"]
-[ext_resource type="PackedScene" uid="uid://dbrujr0hxf6cx" path="res://Objects/Mecanics objects/flashlight.tscn" id="13_xbhgn"]
 
 [sub_resource type="Animation" id="Animation_jgkwf"]
 length = 6.0
@@ -588,7 +587,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.4403, 1.1, -20.2845)
 
 [node name="Character" parent="." instance=ExtResource("3_jiyqt")]
 transform = Transform3D(0.0257233, 0, 0.999669, 0, 1, 0, -0.999669, 0, 0.0257233, -18.9701, 2.09751, 2.19112)
-sensiblidad = 0.01
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -650,8 +648,6 @@ texture = ExtResource("9_a1x8x")
 
 [node name="door" parent="." instance=ExtResource("13_rtug8")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.9475, 1.1, 2.3685)
-
-[node name="Flashlight" parent="." instance=ExtResource("13_xbhgn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9388, 1.44901, 3.02789)
+next_level = "res://Objects/rooms/staris_level.tscn"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

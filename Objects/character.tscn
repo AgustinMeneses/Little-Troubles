@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://blhbsl22buq0u"]
+[gd_scene load_steps=29 format=3 uid="uid://blhbsl22buq0u"]
 
 [ext_resource type="Script" path="res://Scripts/character.gd" id="1_ybuai"]
 [ext_resource type="AudioStream" uid="uid://dl6phr6qyukb8" path="res://Assets/Sounds/walking.mp3" id="2_spbdt"]
@@ -6,10 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://b6yllxt4yw4ls" path="res://Assets/Sounds/size up.mp3" id="4_w8icv"]
 [ext_resource type="AudioStream" uid="uid://bx5y8efismxyq" path="res://Assets/Sounds/size down.mp3" id="5_buhrv"]
 [ext_resource type="AudioStream" uid="uid://2jwjuqp4s4vj" path="res://Assets/Sounds/jump grunt.mp3" id="6_so7m4"]
-[ext_resource type="PackedScene" uid="uid://cek2lqan0b6m8" path="res://Objects/UI/options.tscn" id="7_1qkue"]
-[ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="7_7wd0l"]
-[ext_resource type="FontFile" uid="uid://yyp2l3s4qnye" path="res://Assets/FONTS/ominous-outlaw/Ominous Outlaw Free.otf" id="7_dlnrj"]
-[ext_resource type="FontFile" uid="uid://w73s15g4cqdn" path="res://Assets/FONTS/mistaken/Mistaken.otf" id="10_82too"]
+[ext_resource type="PackedScene" uid="uid://bemll2dvunmgl" path="res://Objects/UI/ui.tscn" id="7_06mfc"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0qo"]
 albedo_color = Color(0.548035, 0.387411, 0, 1)
@@ -218,6 +215,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CanvasLayer/UI/Messages/Label:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CanvasLayer/UI/Messages/Label:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_02n8q"]
 resource_name = "falling"
@@ -377,14 +398,6 @@ _data = {
 "walking": SubResource("Animation_n5y2a")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_v452b"]
-font = ExtResource("7_dlnrj")
-font_size = 100
-
-[sub_resource type="LabelSettings" id="LabelSettings_bwqxe"]
-font = ExtResource("10_82too")
-font_size = 100
-
 [node name="Character" type="CharacterBody3D"]
 collision_mask = 27
 script = ExtResource("1_ybuai")
@@ -394,7 +407,7 @@ JUMP_VELOCITY = 5
 mesh = SubResource("BoxMesh_u2f7f")
 
 [node name="SpringArm3D" type="SpringArm3D" parent="MeshInstance3D"]
-transform = Transform3D(0.999999, 0.00117512, -0.000364338, -0.000786798, 0.838493, 0.544911, 0.00094583, -0.544911, 0.838494, 0, 0, 0)
+transform = Transform3D(0.999999, 0.00117512, -0.000364339, -0.0007868, 0.838493, 0.544912, 0.000945833, -0.544911, 0.838493, 0, 0, 0)
 collision_mask = 255
 spring_length = 3.5
 margin = 0.5
@@ -435,8 +448,11 @@ draw_pass_1 = SubResource("BoxMesh_n185m")
 [node name="PickUp Marker" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.872777, 0, 0)
 
+[node name="PickUp Marker2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.866476)
+
 [node name="Lintern Marker" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.670026, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.670026, 0.372178, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -473,217 +489,12 @@ bus = &"Effects"
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 
-[node name="UI" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("7_7wd0l")
+[node name="UI" parent="CanvasLayer" instance=ExtResource("7_06mfc")]
 
-[node name="Panel" type="Panel" parent="CanvasLayer/UI"]
-self_modulate = Color(0, 0.74902, 0.729412, 0.611765)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Option Buttons" type="GridContainer" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -237.0
-offset_top = -138.0
-offset_right = 237.0
-offset_bottom = 230.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Resume" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
-custom_minimum_size = Vector2(474, 80)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/Option Buttons/Resume"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 153.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.755498, 0.755498)
-text = "Resume
-"
-label_settings = SubResource("LabelSettings_v452b")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Resume Button" type="Button" parent="CanvasLayer/UI/Option Buttons/Resume"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-split_offset = 9
-
-[node name="VSplitContainer6" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-split_offset = 9
-
-[node name="VSplitContainer4" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-split_offset = 9
-
-[node name="SETTINGS" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
-custom_minimum_size = Vector2(474, 80)
-layout_mode = 2
-
-[node name="SETTINGS" type="Label" parent="CanvasLayer/UI/Option Buttons/SETTINGS"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 153.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.755498, 0.755498)
-text = "Settings
-"
-label_settings = SubResource("LabelSettings_v452b")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Settings Button" type="Button" parent="CanvasLayer/UI/Option Buttons/SETTINGS"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="VSplitContainer2" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-
-[node name="VSplitContainer5" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-
-[node name="VSplitContainer3" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-
-[node name="Back_to Menu" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
-custom_minimum_size = Vector2(474, 80)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/Option Buttons/Back_to Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 153.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.755498, 0.755498)
-text = "back to menu"
-label_settings = SubResource("LabelSettings_v452b")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Back to menuButton" type="Button" parent="CanvasLayer/UI/Option Buttons/Back_to Menu"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="VSplitContainer7" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-
-[node name="VSplitContainer8" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-
-[node name="VSplitContainer9" type="VSplitContainer" parent="CanvasLayer/UI/Option Buttons"]
-layout_mode = 2
-
-[node name="Exit" type="Panel" parent="CanvasLayer/UI/Option Buttons"]
-custom_minimum_size = Vector2(474, 80)
-layout_mode = 2
-
-[node name="Label" type="Label" parent="CanvasLayer/UI/Option Buttons/Exit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = 153.0
-offset_bottom = 50.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.755498, 0.755498)
-text = "Exit Game
-"
-label_settings = SubResource("LabelSettings_v452b")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Exit Button" type="Button" parent="CanvasLayer/UI/Option Buttons/Exit"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-flat = true
-
-[node name="Label" type="Label" parent="CanvasLayer/UI"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -516.0
-offset_top = 20.0
-offset_right = 274.0
-offset_bottom = 143.0
-grow_horizontal = 2
-scale = Vector2(1.29575, 1.29575)
-text = "Settings"
-label_settings = SubResource("LabelSettings_bwqxe")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Options" parent="CanvasLayer/UI" instance=ExtResource("7_1qkue")]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -556.0
-offset_top = -260.0
-offset_right = 556.0
-offset_bottom = 260.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(-4.37114e-08, -0.937446, 0, 1, -4.09771e-08, 0, 0, 0, 1, 0.312043, 0, 0)
+collision_mask = 17
+collide_with_areas = true
 
 [connection signal="body_entered" from="PickUpArea" to="." method="_on_pick_up_area_body_entered"]
 [connection signal="body_exited" from="PickUpArea" to="." method="_on_pick_up_area_body_exited"]
-[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/Resume/Resume Button" to="CanvasLayer/UI" method="_on_resume_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/SETTINGS/Settings Button" to="CanvasLayer/UI" method="_on_settings_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/Back_to Menu/Back to menuButton" to="CanvasLayer/UI" method="_on_back_to_menu_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/UI/Option Buttons/Exit/Exit Button" to="CanvasLayer/UI" method="_on_exit_button_pressed"]
