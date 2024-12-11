@@ -19,6 +19,8 @@ var is_small : bool = false
 @onready var self_marker = $"PickUp Marker"
 @onready var lintern_marker = $"Lintern Marker"
 @onready var ray_cast: RayCast3D = $RayCast3D
+@onready var ui: UI_CONTROL = $CanvasLayer/UI
+
 
 enum states {chiquito , normal}
 var stados = states.normal
@@ -102,8 +104,9 @@ func _input(event):
 			return
 		object.front()._picked_up(self_marker, self)
 		is_picked_up=true
-	if Input.is_action_just_pressed("E") and flashlight.pick != null:
-		flashlight._picked_up(lintern_marker)
+	if Input.is_action_just_pressed("E") and flashlight:
+		if flashlight.pick != null:
+			flashlight._picked_up(lintern_marker)
 	if event is InputEventMouseMotion:
 		rotate_object_local(Vector3.UP,event.relative.x* -0.01)
 
@@ -111,7 +114,8 @@ func _size(size:String):
 	if size == "small" and not is_small:
 		stados = states.chiquito
 		anim.play("Normal_to_small")
-		flashlight._change_colors("smol")
+		if flashlight:
+			flashlight._change_colors("smol")
 		is_small = true
 		can_move = false
 		await anim.animation_finished
@@ -119,7 +123,8 @@ func _size(size:String):
 	elif size == "normal" and is_small:
 		stados = states.normal
 		anim.play("small_to_normal")
-		flashlight._change_colors("big")
+		if flashlight:
+			flashlight._change_colors("big")
 		is_small = false
 		can_move = false
 		await anim.animation_finished

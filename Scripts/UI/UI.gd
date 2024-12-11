@@ -1,8 +1,9 @@
-extends Control
+class_name UI_CONTROL extends Control
 @onready var option_buttons = $"Option Buttons"
 @onready var label = $"Label"
 @onready var options: settings = $"Options"
 @onready var anim: AnimationPlayer = $AnimationPlayer
+@onready var timer: Label = $Messages/TIMER
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,6 +11,7 @@ func _ready():
 	option_buttons.visible = false
 	label.visible = false
 	options.visible = false
+	timer.visible = false
 	pass # Replace with function body.
 
 func _input(_event):
@@ -50,3 +52,7 @@ func _on_back_to_menu_button_pressed():
 func _on_exit_button_pressed():
 	get_tree().quit()
 	pass # Replace with function body.
+
+func _timer(value:int):
+	print(value)
+	$Messages/TIMER.text = str(value)

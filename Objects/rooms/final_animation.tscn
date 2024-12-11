@@ -1,0 +1,164 @@
+[gd_scene load_steps=10 format=3 uid="uid://bqfen8di8xcu4"]
+
+[ext_resource type="Texture2D" uid="uid://cgylqrdfno3ee" path="res://Assets/Sprite.png" id="1_yt6aw"]
+[ext_resource type="PackedScene" uid="uid://cmmc1grsbix0j" path="res://Objects/Mecanics objects/door.tscn" id="2_b2no2"]
+[ext_resource type="Texture2D" uid="uid://cxv25h6qikqk6" path="res://Assets/gerardo.png" id="3_yt7u6"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w3ae5"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 3.48
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0qo"]
+albedo_color = Color(0.548035, 0.387411, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ct5r4"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("StandardMaterial3D_pc0qo")
+
+[sub_resource type="Animation" id="Animation_basog"]
+resource_name = "lol"
+length = 10.0
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1, 2.8, 5.1, 6.2, 6.7, 7.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(2.3178, 2.00867, 5.11867), Vector3(2.3178, 0.99945, 4.53403), Vector3(2.3178, 0.99945, 0.856524), Vector3(2.3178, 0.99945, -0.713218), Vector3(2.3178, 0.99945, -1.0012), Vector3(2.3178, 0.99945, 5.3702)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1, 2.2, 2.6, 5.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.652153, -0.000345027, -0.000989962), Vector3(-0.0164515, -0.000274257, -0.00119485), Vector3(-0.0164515, -0.000274257, -0.00119485), Vector3(-0.015708, 3.14159, -0.00174533)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("door")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(6.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_open_door"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fi1uy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Camera3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(2.3178, 2.00867, 5.11867)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.652153, -0.000345027, -0.000989962)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dvqno"]
+_data = {
+"RESET": SubResource("Animation_fi1uy"),
+"lol": SubResource("Animation_basog")
+}
+
+[node name="FINAL ANIMATION" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18879, 3.38348, -0.0699844)
+flip_faces = true
+size = Vector3(12.0745, 7.78784, 13.0963)
+material = SubResource("StandardMaterial3D_w3ae5")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.999999, 0.00119936, -0.00027422, -0.000786801, 0.794779, 0.606899, 0.000945833, -0.606898, 0.794779, 2.3178, 2.00867, 5.11867)
+fov = 99.7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.31905, 0, 0.960067)
+mesh = SubResource("BoxMesh_ct5r4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_dvqno")
+}
+autoplay = "lol"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_yt6aw")
+
+[node name="door" parent="." instance=ExtResource("2_b2no2")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.81688, 0, 5.75417)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.0874801, 0, 0, 0, 0.224533, 0, 0, 0, 0.224533, 2.2984, 0.749667, 6.28068)
+flip_h = true
+texture = ExtResource("3_yt7u6")

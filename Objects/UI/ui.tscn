@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bemll2dvunmgl"]
+[gd_scene load_steps=13 format=3 uid="uid://bemll2dvunmgl"]
 
 [ext_resource type="Script" path="res://Scripts/UI/UI.gd" id="1_a5h0o"]
 [ext_resource type="FontFile" uid="uid://yyp2l3s4qnye" path="res://Assets/FONTS/ominous-outlaw/Ominous Outlaw Free.otf" id="2_yh7p0"]
 [ext_resource type="FontFile" uid="uid://w73s15g4cqdn" path="res://Assets/FONTS/mistaken/Mistaken.otf" id="3_b2vb0"]
+[ext_resource type="FontFile" uid="uid://dcfh31n1bhclp" path="res://Assets/FONTS/mother-s-day-in-spain/Mother's Day in Spain.ttf" id="3_hnp3d"]
 [ext_resource type="PackedScene" uid="uid://cek2lqan0b6m8" path="res://Objects/UI/options.tscn" id="4_20nlt"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_mb4jo"]
@@ -10,6 +11,13 @@ font = ExtResource("3_b2vb0")
 font_size = 75
 font_color = Color(1, 0.260787, 0.193406, 1)
 outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1lpmu"]
+font = ExtResource("3_hnp3d")
+font_size = 170
+font_color = Color(0.850822, 0.047584, 0.00961017, 1)
+outline_size = 25
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_v452b"]
@@ -77,6 +85,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Label" type="Label" parent="Messages"]
+visible = false
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.00173611
@@ -93,6 +102,18 @@ label_settings = SubResource("LabelSettings_mb4jo")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="TIMER" type="Label" parent="Messages"]
+layout_mode = 1
+offset_left = -1.0
+offset_right = 139.0
+offset_bottom = 178.0
+scale = Vector2(1.23999, 1.23999)
+text = "100
+"
+label_settings = SubResource("LabelSettings_1lpmu")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Option Buttons" type="GridContainer" parent="."]
 layout_mode = 1

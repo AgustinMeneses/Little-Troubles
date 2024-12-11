@@ -14,37 +14,6 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_ypi5x"]
 size = Vector3(6.10693, 4.02161, 1.99133)
 
-[sub_resource type="Animation" id="Animation_ystfj"]
-resource_name = "horror text"
-length = 12.0
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Door Trap label:text")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1.65, 1.75, 2, 2.25, 2.5, 2.75, 3, 3.15, 3.9, 4.55, 5.45, 7.54008, 7.8, 8.1, 8.45, 8.6, 9.45, 10.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": ["PARECE QUE NO CABES..", ".", "..", "...", ".", "..", "...", "", "YA SE!", "QUE TAL SI JUGAMOS UN JUEGO?", "Tenes que encontar el boton 
-azul antes de que 
-se acabe el tiempo", "De lo contrario", "De lo contrario.", "De lo contrario..", "De lo contrario...", "", "MORIRAS", "QUE EMPIECE EL JUEGO"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Door Trap label:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(9.45, 9.85),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.755928, 0, 0.140625, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_to2t3"]
 length = 0.001
 tracks/0/type = "value"
@@ -70,6 +39,61 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Door Trap label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ystfj"]
+resource_name = "horror text"
+length = 19.0
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Door Trap label:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(8.9, 9, 9.25, 9.5, 9.75, 10, 10.25, 10.4, 11.15, 11.8, 12.7, 14.7901, 15.05, 15.35, 15.7, 15.85, 16.7, 17.95),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["PARECE QUE NO CABES..", ".", "..", "...", ".", "..", "...", "", "YA SE!", "QUE TAL SI JUGAMOS UN JUEGO?", "Tenes que encontar el boton 
+azul antes de que 
+se acabe el tiempo", "De lo contrario", "De lo contrario.", "De lo contrario..", "De lo contrario...", "", "MORIRAS", "QUE EMPIECE EL JUEGO"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Door Trap label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(16.7, 17.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.755928, 0, 0.140625, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Door Trap label:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(7.25),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nqppc"]
@@ -138,7 +162,7 @@ data = {
 metadata/_editor_floor_ = Vector3(0, -2, 0)
 
 [node name="Character" parent="." instance=ExtResource("2_kx22t")]
-transform = Transform3D(-0.0118505, 0, 0.99993, 0, 1, 0, -0.99993, 0, -0.0118505, 1.25799, 1.20457, -0.471423)
+transform = Transform3D(-0.0118505, 0, 0.99993, 0, 1, 0, -0.99993, 0, -0.0118505, -0.519497, 1.20457, -1.38668)
 
 [node name="Lights" type="Node3D" parent="."]
 
@@ -211,6 +235,9 @@ autoplay = true
 [node name="smol_button" parent="." instance=ExtResource("5_6vrkj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.61091, -1.26419, 3.75243)
 
+[node name="smol_button2" parent="." instance=ExtResource("5_6vrkj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.6396, -1.26419, 34.4617)
+
 [node name="Boxes" type="Node3D" parent="."]
 
 [node name="Box" parent="Boxes" instance=ExtResource("6_tdhtf")]
@@ -225,14 +252,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.6986, -1.2608, 30.4403)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.84314, 1.21452, -0.579593)
 
 [node name="door" parent="Objects" instance=ExtResource("10_o4ffp")]
-transform = Transform3D(-4.37114e-08, 0, 1.07744, 0, 1, 0, -1, 0, -4.70962e-08, -19.4788, -0.41392, 67.4779)
+transform = Transform3D(-4.37114e-08, 0, 1.07744, 0, 1, 0, -1, 0, -4.70962e-08, -19.4788, -0.41392, 67.4045)
+next_level = "res://Objects/rooms/final_animation.tscn"
+animation = true
 
 [node name="Areas" type="Node3D" parent="."]
 
-[node name="Door area trap" type="StaticBody3D" parent="Areas"]
+[node name="Door area trap" type="Area3D" parent="Areas"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Areas/Door area trap"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3632, 1.5108, 67.6475)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.3448, 1.5108, 67.5077)
 shape = SubResource("BoxShape3D_ypi5x")
 
 [node name="Labels" type="Node3D" parent="."]
@@ -247,3 +276,6 @@ libraries = {
 }
 
 [node name="TIMER" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Areas/Door area trap" to="." method="_on_door_area_trap_body_entered"]
+[connection signal="timeout" from="TIMER" to="." method="_on_timer_timeout"]
