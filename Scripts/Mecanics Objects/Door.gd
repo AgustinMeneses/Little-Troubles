@@ -18,8 +18,9 @@ func _input(_event):
 func _on_close_the_door_body_entered(body):
 	if available and body.is_in_group("Player"):
 		anim.play("close")
+		$AnimationPlayer2.play("final")
 		available=false
-		await anim.animation_finished
+		await $AnimationPlayer2.animation_finished
 		pick.texture=null
 		if !animation:
 			get_parent().level_completed(next_level)

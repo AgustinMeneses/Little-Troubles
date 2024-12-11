@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bsjw8syygsga4"]
+[gd_scene load_steps=16 format=3 uid="uid://bsjw8syygsga4"]
 
 [ext_resource type="MeshLibrary" uid="uid://bj8xch6lx5nv4" path="res://Tile Set.tres" id="1_35rv8"]
 [ext_resource type="Environment" uid="uid://c2gcjyhvtkain" path="res://Worl_eviroment.tres" id="1_ejo1t"]
@@ -96,10 +96,14 @@ tracks/2/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_blhct"]
+resource_name = "start"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nqppc"]
 _data = {
 "RESET": SubResource("Animation_to2t3"),
-"horror text": SubResource("Animation_ystfj")
+"horror text": SubResource("Animation_ystfj"),
+"start": SubResource("Animation_blhct")
 }
 
 [node name="Staris Level" type="Node3D"]

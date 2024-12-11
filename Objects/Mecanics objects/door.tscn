@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=4 uid="uid://cmmc1grsbix0j"]
+[gd_scene load_steps=21 format=4 uid="uid://cmmc1grsbix0j"]
 
 [ext_resource type="Texture2D" uid="uid://du25mx27j2kti" path="res://Assets/kenney_building-kit/Models/GLB format/Textures/colormap.png" id="1_e2s8s"]
 [ext_resource type="Script" path="res://Scripts/Mecanics Objects/Door.gd" id="1_emqp8"]
 [ext_resource type="Texture2D" uid="uid://bj12qob0j8mj7" path="res://Assets/kenney_cursor-pixel-pack/Tiles/tile_0135.png" id="3_v7t8x"]
 [ext_resource type="AudioStream" uid="uid://bbm84whpokqon" path="res://Assets/Sounds/door opening.mp3" id="4_ucqlr"]
+[ext_resource type="Texture2D" uid="uid://cgylqrdfno3ee" path="res://Assets/Sprite.png" id="5_7vy3x"]
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_p4a3i"]
 points = PackedVector3Array(0.0499951, 1.64982, 0.899909, 0.0499951, 1.82208, 0.865684, -0.0500098, 1.64982, 0.899909, 0.0499951, 6.20393e-17, 0.899909, 0.075, 0.949892, 0.799949, -0.0500098, 1.82208, 0.865684, 0.075, 0.985249, 0.78528, 0.0499951, 1.96803, 0.768168, -0.075, 0.949892, 0.799949, -0.0500098, 6.20393e-17, 0.899909, 0.0499951, 6.20393e-17, -9.7435e-06, 0.075, 0.199804, 0.0499707, 0.075, 0.764477, 0.78528, 0.075, 0.799834, 0.799949, -0.0500098, 1.96803, 0.768168, -0.075, 0.985249, 0.78528, 0.075, 1.44981, 0.0499707, 0.0499951, 2.06567, 0.62212, -0.075, 0.799834, 0.799949, -0.075, 0.764477, 0.78528, -0.075, 0.199804, 0.0499707, -0.0500098, 6.20393e-17, -9.7435e-06, 0.0499951, 0.199804, -0.025, 0.075, 0.199804, -9.7435e-06, -0.0500098, 2.06567, 0.62212, -0.075, 1.44981, 0.0499707, 0.075, 1.44981, -9.7435e-06, 0.0499951, 2.1, 0.449995, -0.075, 0.199804, -9.7435e-06, -0.0500098, 0.199804, -0.025, 0.0499951, 1.44981, -0.025, -0.0500098, 2.1, 0.449995, -0.075, 1.44981, -9.7435e-06, 0.0499951, 1.64982, -9.7435e-06, 0.0499951, 1.82208, 0.034216, 0.0499951, 1.96803, 0.131732, 0.0499951, 2.06567, 0.27778, -0.0500098, 1.44981, -0.025, -0.0500098, 2.06567, 0.27778, -0.0500098, 1.96803, 0.131732, -0.0500098, 1.82208, 0.034216, -0.0500098, 1.64982, -9.7435e-06)
@@ -111,6 +112,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Control/TextureRect:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_b4q2o"]
 resource_name = "close"
@@ -208,6 +221,43 @@ _data = {
 "open-and-close": SubResource("Animation_x8ahf")
 }
 
+[sub_resource type="Animation" id="Animation_fd4j5"]
+resource_name = "final"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_saty1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/TextureRect:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gesh8"]
+_data = {
+"RESET": SubResource("Animation_saty1"),
+"final": SubResource("Animation_fd4j5")
+}
+
 [node name="door" type="StaticBody3D"]
 collision_layer = 8
 collision_mask = 17
@@ -235,12 +285,11 @@ shape = SubResource("BoxShape3D_cflb3")
 [node name="door-rotate-round-b" type="Node3D" parent="."]
 
 [node name="door" type="MeshInstance3D" parent="door-rotate-round-b"]
-transform = Transform3D(1, 0, -3.8754e-16, 0, 1, 0, 3.8754e-16, 0, 1, 0, 0, 0)
 mesh = SubResource("ArrayMesh_yesvp")
 skeleton = NodePath("")
 
 [node name="handle" type="MeshInstance3D" parent="door-rotate-round-b/door"]
-transform = Transform3D(1, 0, 0, 0, 1, 1.16262e-16, 0, -1.16262e-16, 1, 0, 0.9, 0.75)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0.75)
 mesh = SubResource("ArrayMesh_nnc6g")
 skeleton = NodePath("")
 
@@ -253,5 +302,28 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.989403, 0.385188)
 stream = ExtResource("4_ucqlr")
 pitch_scale = 1.54
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_7vy3x")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gesh8")
+}
 
 [connection signal="body_entered" from="Close the door" to="." method="_on_close_the_door_body_entered"]
