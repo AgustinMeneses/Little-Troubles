@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://dwchsod3svfgg" path="res://Assets/Sounds/spotlight.mp3" id="5_224c1"]
 [ext_resource type="AudioStream" uid="uid://p6g4w1eg1rsm" path="res://Assets/Sounds/flourescent lightbulbs.mp3" id="5_x6p42"]
 [ext_resource type="Texture2D" uid="uid://cxv25h6qikqk6" path="res://Assets/gerardo.png" id="6_e8n0p"]
-[ext_resource type="Texture2D" uid="uid://cgylqrdfno3ee" path="res://Assets/Sprite.png" id="9_a1x8x"]
+[ext_resource type="Texture2D" uid="uid://c1qflhmhkreis" path="res://Assets/Sprite.png" id="9_a1x8x"]
 [ext_resource type="FontFile" uid="uid://w73s15g4cqdn" path="res://Assets/FONTS/mistaken/Mistaken.otf" id="9_dmb50"]
 [ext_resource type="PackedScene" uid="uid://cmmc1grsbix0j" path="res://Objects/Mecanics objects/door.tscn" id="13_rtug8"]
 
@@ -647,7 +647,7 @@ grow_vertical = 2
 texture = ExtResource("9_a1x8x")
 
 [node name="door" parent="." instance=ExtResource("13_rtug8")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.9475, 1.1, 2.3685)
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 27.9475, 6.48585, 2.3685)
 next_level = "res://Objects/rooms/staris_level.tscn"
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
